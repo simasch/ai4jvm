@@ -1,27 +1,17 @@
-# AI4JVM - Project Guidelines
+# AI4JVM
 
-## About
+Single-page website (`index.html`) — HTML + inline CSS, no build step.
 
-AI4JVM is a curated guide to the Java AI ecosystem — a single-page website (`index.html`) covering agent frameworks, inference engines, code assistants, key people, and learning resources.
+## Spec
 
-## Code Assistants Section Focus
+`SPEC.md` is the source of truth for all site content and structure. When updating the site:
 
-The "Java with Code Assistants" section emphasizes **technologies that enhance Java development when used alongside AI code assistants**, not just the assistants themselves. This includes:
+1. Update `SPEC.md` first with the new content, links, and descriptions
+2. Then update `index.html` to match the spec
 
-- **MCP servers** that give AI agents access to Java-specific context (e.g., javadocs.dev for live Javadoc browsing)
-- **SkillsJars** — reusable skill packages (Maven/Gradle JARs containing `SKILL.md` files) that teach AI agents Java patterns and best practices
-- **AI coding assistants** with strong Java support (Claude Code, GitHub Copilot, JetBrains AI, Amazon Q)
+## Style Rules
 
-When adding new entries to this section, prioritize tools and technologies that bridge the gap between AI assistants and the Java ecosystem — MCP servers, skill registries, IDE plugins, and context providers — over general-purpose AI tools.
-
-## Structure
-
-- `index.html` — the entire site (HTML + CSS, no build step)
-- Sections: News, Agent Frameworks, Code Assistants, Inference & Training, People, Resources
-- Dark theme with card-based layout
-
-## Style
-
+- Keep descriptions concise (2-3 sentences) and factual
 - Cards use badge classes: `badge-framework`, `badge-inference`, `badge-assistant`, `badge-resource`
 - Each card has a title, description, and links (Docs, GitHub, Website, etc.)
-- Keep descriptions concise (2-3 sentences) and factual
+- The "Java with Code Assistants" section prioritizes tools that bridge AI assistants and the Java ecosystem (MCP servers, skill registries, IDE plugins, context providers) over general-purpose AI tools
