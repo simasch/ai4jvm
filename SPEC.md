@@ -16,6 +16,7 @@ AI4JVM is a curated guide to the Java AI ecosystem — a single-page website cov
 - Cards have hover effects (border highlight, slight lift)
 - Badge types: `badge-framework` (purple), `badge-inference` (blue), `badge-assistant` (pink), `badge-resource` (green)
 - Where possible use icons for links - for blog or other use a world / www icon. don't use text labels.
+- In a given section, use different colors for different badge types.
 
 ## Hero
 
@@ -150,17 +151,16 @@ Run models, train classifiers, and do ML inference directly on the JVM — no Py
 Key voices at the intersection of Java and AI.
 Notes:
 - Alphabetical by last name
-- Indicate if someone is a Java Champion using: https://github.com/aalmiray/java-champions/blob/main/java-champions.yml
+- Indicate if someone is a Java Champion using a badge on its own line (below the name, above the role). Don't repeat "Java Champion" in the role text. Lookup: https://github.com/aalmiray/java-champions/blob/main/java-champions.yml
 - Add profile photos if found.
 - Add Twitter, GitHub, LinkedIn, Bluesky, YouTube, if available.
-
 
 ### Bruno Borges
 
 - **Badge:** Person
 - **Initials:** BB
 - **Photo:** https://avatars.githubusercontent.com/u/129743?v=4
-- **Role:** Java Champion, Principal Program Manager — Microsoft Java Engineering Group
+- **Role:** Principal Program Manager — Microsoft Java Engineering Group
 - **Links:** [@brunoborges](https://twitter.com/brunoborges) · [Bluesky](https://bsky.app/profile/brunoborges.bsky.social) · [GitHub](https://github.com/brunoborges) · [LinkedIn](https://ca.linkedin.com/in/brunocborges) · [Blog](https://blog.brunoborges.info/)
 
 ### Markus Eisele
@@ -168,7 +168,7 @@ Notes:
 - **Badge:** Person
 - **Initials:** ME
 - **Photo:** https://avatars.githubusercontent.com/u/1358554?v=4
-- **Role:** Java Champion, Developer Advocate — IBM Research, JavaLand founder
+- **Role:** Developer Advocate — IBM Research, JavaLand founder
 - **Links:** [@myfear](https://twitter.com/myfear) · [Bluesky](https://bsky.app/profile/myfear.com) · [GitHub](https://github.com/myfear) · [LinkedIn](https://www.linkedin.com/in/markuseisele/) · [Blog](https://blog.eisele.net/)
 
 ### Rod Johnson
@@ -176,7 +176,7 @@ Notes:
 - **Badge:** Person
 - **Initials:** RJ
 - **Photo:** https://avatars.githubusercontent.com/u/1916583?v=4
-- **Role:** Java Champion, Creator of Spring Framework, CEO of Embabel
+- **Role:** Creator of Spring Framework, CEO of Embabel
 - **Links:** [@springrod](https://twitter.com/springrod) · [GitHub](https://github.com/johnsonr) · [LinkedIn](https://www.linkedin.com/in/johnsonroda/) · [Blog](https://medium.com/@springrod)
 
 ### Guillaume Laforge
@@ -184,7 +184,7 @@ Notes:
 - **Badge:** Person
 - **Initials:** GL
 - **Photo:** https://avatars.githubusercontent.com/u/47907?v=4
-- **Role:** Java Champion, Google Developer Advocate — Java, Groovy, AI
+- **Role:** Google Developer Advocate — Java, Groovy, AI
 - **Links:** [@glaforge](https://twitter.com/glaforge) · [Bluesky](https://bsky.app/profile/glaforge.bsky.social) · [GitHub](https://github.com/glaforge) · [LinkedIn](https://www.linkedin.com/in/glaforge/) · [Blog](https://glaforge.dev/)
 
 ### Dmytro Liubarskyi
@@ -200,7 +200,7 @@ Notes:
 - **Badge:** Person
 - **Initials:** JL
 - **Photo:** https://avatars.githubusercontent.com/u/54473?v=4
-- **Role:** Java Champion, Spring Developer Advocate, Spring AI talks
+- **Role:** Spring Developer Advocate, Spring AI talks
 - **Links:** [@starbuxman](https://twitter.com/starbuxman) · [Bluesky](https://bsky.app/profile/starbuxman.joshlong.com) · [GitHub](https://github.com/joshlong) · [LinkedIn](https://www.linkedin.com/in/joshlong/) · [Spring Blog](https://spring.io/authors/joshlong/)
 
 ### T. Jake Luciani
@@ -232,7 +232,7 @@ Notes:
 - **Badge:** Person
 - **Initials:** JR
 - **Photo:** https://avatars.githubusercontent.com/u/14850786?v=4
-- **Role:** Java Champion, Developer Advocate at Neo4j
+- **Role:** Developer Advocate at Neo4j
 - **Links:** [@JMHReif](https://twitter.com/JMHReif) · [GitHub](https://github.com/JMHReif) · [LinkedIn](https://www.linkedin.com/in/jmhreif/) · [Website](https://jmhreif.com)
 
 ### Bartosz Sorrentino
@@ -248,7 +248,7 @@ Notes:
 - **Badge:** Person
 - **Initials:** DV
 - **Photo:** https://avatars.githubusercontent.com/u/349507?v=4
-- **Role:** Java Champion, Spring Developer Advocate, YouTube educator
+- **Role:** Spring Developer Advocate, YouTube educator
 - **Links:** [@therealdanvega](https://twitter.com/therealdanvega) · [Bluesky](https://bsky.app/profile/danvega.dev) · [GitHub](https://github.com/danvega) · [LinkedIn](https://www.linkedin.com/in/danvega/) · [Blog](https://www.danvega.dev/)
 
 ### Dmitry Vinnik
@@ -264,7 +264,7 @@ Notes:
 - **Badge:** Person
 - **Initials:** CW
 - **Photo:** https://avatars.githubusercontent.com/u/167926?v=4
-- **Role:** Java Champion, Author of *Spring AI in Action*
+- **Role:** Author of *Spring AI in Action*
 - **Links:** [@habuma](https://twitter.com/habuma) · [Bluesky](https://bsky.app/profile/habuma.com) · [GitHub](https://github.com/habuma) · [LinkedIn](https://www.linkedin.com/in/habuma)
 
 ### James Ward
@@ -272,7 +272,7 @@ Notes:
 - **Badge:** Person
 - **Initials:** JW
 - **Photo:** https://avatars.githubusercontent.com/u/65043?v=4
-- **Role:** Java Champion, Developer Advocate — Java, Kotlin, Cloud, AI
+- **Role:** Developer Advocate — Java, Kotlin, Cloud, AI
 - **Links:** [@_JamesWard](https://twitter.com/_jamesward) · [Bluesky](https://bsky.app/profile/jamesward.com) · [GitHub](https://github.com/jamesward) · [LinkedIn](https://www.linkedin.com/in/jamesward) · [Blog](https://jamesward.com)
 
 ---
@@ -317,7 +317,7 @@ Notes:
 
 ### Devoxx YouTube
 
-- **Badge:** Resource
+- **Badge:** Videos
 - **Description:** Thousands of conference talks on Java, AI, cloud, and architecture
 - **Links:** [YouTube](https://www.youtube.com/@DevoxxForever)
 

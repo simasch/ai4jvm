@@ -111,6 +111,7 @@
     .badge-inference { background: rgba(56,189,248,.2); color: #7dd3fc; }
     .badge-assistant { background: rgba(244,114,182,.2); color: #f9a8d4; }
     .badge-resource { background: rgba(52,211,153,.2); color: #6ee7b7; }
+    .badge-video { background: rgba(251,191,36,.2); color: #fcd34d; }
     .card h3 { font-size: 1.1rem; font-weight: 600; color: var(--text-bright); margin-bottom: .4rem; }
     .card p { font-size: .9rem; color: var(--text-muted); margin-bottom: .75rem; }
     .card-links { display: flex; gap: .75rem; flex-wrap: wrap; }
@@ -158,6 +159,19 @@
     }
     .person-avatar img { width: 100%; height: 100%; object-fit: cover; }
     .person-info h4 { font-size: .95rem; font-weight: 600; color: var(--text-bright); }
+    .badge-champion {
+      display: inline-block;
+      font-size: .55rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      padding: .1rem .4rem;
+      border-radius: 4px;
+      background: rgba(250,204,21,.2);
+      color: #fde047;
+      white-space: nowrap;
+      margin-top: .2rem;
+    }
     .person-info p { font-size: .8rem; color: var(--text-muted); }
     .person-info .person-links { margin-top: .25rem; display: flex; gap: .5rem; flex-wrap: wrap; }
     .person-info .person-links a { font-size: .78rem; }
@@ -335,7 +349,7 @@
       </div>
 
       <div class="card">
-        <span class="card-badge badge-framework">SDK</span>
+        <span class="card-badge badge-inference">SDK</span>
         <h3>MCP Java SDK</h3>
         <p>The official Java SDK for Model Context Protocol servers and clients. Co-maintained by the Spring AI team and Anthropic. Sync/async, STDIO/SSE/Streamable HTTP transports, OAuth support.</p>
         <div class="card-links">
@@ -345,7 +359,7 @@
       </div>
 
       <div class="card">
-        <span class="card-badge badge-framework">SDK</span>
+        <span class="card-badge badge-inference">SDK</span>
         <h3>Anthropic Java SDK</h3>
         <p>Official Java SDK for the Claude Messages API. Streaming, retries, structured outputs, extended thinking, code execution, and files API. Build Java apps powered by Claude.</p>
         <div class="card-links">
@@ -376,7 +390,7 @@
       </div>
 
       <div class="card">
-        <span class="card-badge badge-assistant">Skills</span>
+        <span class="card-badge badge-framework">Skills</span>
         <h3>SkillsJars</h3>
         <p>A packaging format and registry for distributing reusable AI agent skills as Maven/Gradle JARs. Skills are Markdown files (<code>SKILL.md</code>) under <code>META-INF/skills/</code> that teach AI agents domain-specific patterns. Discover and load skills on demand in Claude Code, Kiro, and Spring AI apps.</p>
         <div class="card-links">
@@ -428,7 +442,7 @@
       </div>
 
       <div class="card">
-        <span class="card-badge badge-inference">Training</span>
+        <span class="card-badge badge-framework">Training</span>
         <h3>Tribuo</h3>
         <p>Oracle Labs' ML library for classification, regression, clustering, and anomaly detection. Strong typing, provenance tracking for reproducibility, and integrations with XGBoost, ONNX Runtime, TensorFlow, and LibSVM.</p>
         <div class="card-links">
@@ -447,7 +461,7 @@
       </div>
 
       <div class="card">
-        <span class="card-badge badge-inference">Training</span>
+        <span class="card-badge badge-framework">Training</span>
         <h3>TensorFlow Java</h3>
         <p>Official Java bindings for TensorFlow. Train and deploy TF models entirely in Java. Used by Tribuo under the hood. Suitable for teams that want to stay within the JVM ecosystem while using TensorFlow's model formats.</p>
         <div class="card-links">
@@ -473,7 +487,8 @@
         <div class="person-avatar"><img src="https://avatars.githubusercontent.com/u/129743?v=4" alt="Bruno Borges"></div>
         <div class="person-info">
           <h4>Bruno Borges</h4>
-          <p>Java Champion, Principal Program Manager &mdash; Microsoft Java Engineering Group</p>
+          <span class="badge-champion">Java Champion</span>
+          <p>Principal Program Manager &mdash; Microsoft Java Engineering Group</p>
           <div class="person-links">
             <a class="icon icon-x" href="https://twitter.com/brunoborges" title="@brunoborges"></a>
             <a class="icon icon-bluesky" href="https://bsky.app/profile/brunoborges.bsky.social" title="Bluesky"></a>
@@ -488,7 +503,8 @@
         <div class="person-avatar"><img src="https://avatars.githubusercontent.com/u/1358554?v=4" alt="Markus Eisele"></div>
         <div class="person-info">
           <h4>Markus Eisele</h4>
-          <p>Java Champion, Developer Advocate &mdash; IBM Research, JavaLand founder</p>
+          <span class="badge-champion">Java Champion</span>
+          <p>Developer Advocate &mdash; IBM Research, JavaLand founder</p>
           <div class="person-links">
             <a class="icon icon-x" href="https://twitter.com/myfear" title="@myfear"></a>
             <a class="icon icon-bluesky" href="https://bsky.app/profile/myfear.com" title="Bluesky"></a>
@@ -503,7 +519,8 @@
         <div class="person-avatar"><img src="https://avatars.githubusercontent.com/u/1916583?v=4" alt="Rod Johnson"></div>
         <div class="person-info">
           <h4>Rod Johnson</h4>
-          <p>Java Champion, Creator of Spring Framework, CEO of Embabel</p>
+          <span class="badge-champion">Java Champion</span>
+          <p>Creator of Spring Framework, CEO of Embabel</p>
           <div class="person-links">
             <a class="icon icon-x" href="https://twitter.com/springrod" title="@springrod"></a>
             <a class="icon icon-github" href="https://github.com/johnsonr" title="GitHub"></a>
@@ -517,7 +534,8 @@
         <div class="person-avatar"><img src="https://avatars.githubusercontent.com/u/47907?v=4" alt="Guillaume Laforge"></div>
         <div class="person-info">
           <h4>Guillaume Laforge</h4>
-          <p>Java Champion, Google Developer Advocate &mdash; Java, Groovy, AI</p>
+          <span class="badge-champion">Java Champion</span>
+          <p>Google Developer Advocate &mdash; Java, Groovy, AI</p>
           <div class="person-links">
             <a class="icon icon-x" href="https://twitter.com/glaforge" title="@glaforge"></a>
             <a class="icon icon-bluesky" href="https://bsky.app/profile/glaforge.bsky.social" title="Bluesky"></a>
@@ -545,7 +563,8 @@
         <div class="person-avatar"><img src="https://avatars.githubusercontent.com/u/54473?v=4" alt="Josh Long"></div>
         <div class="person-info">
           <h4>Josh Long</h4>
-          <p>Java Champion, Spring Developer Advocate, Spring AI talks</p>
+          <span class="badge-champion">Java Champion</span>
+          <p>Spring Developer Advocate, Spring AI talks</p>
           <div class="person-links">
             <a class="icon icon-x" href="https://twitter.com/starbuxman" title="@starbuxman"></a>
             <a class="icon icon-bluesky" href="https://bsky.app/profile/starbuxman.joshlong.com" title="Bluesky"></a>
@@ -599,7 +618,8 @@
         <div class="person-avatar"><img src="https://avatars.githubusercontent.com/u/14850786?v=4" alt="Jennifer Reif"></div>
         <div class="person-info">
           <h4>Jennifer Reif</h4>
-          <p>Java Champion, Developer Advocate at Neo4j</p>
+          <span class="badge-champion">Java Champion</span>
+          <p>Developer Advocate at Neo4j</p>
           <div class="person-links">
             <a class="icon icon-x" href="https://twitter.com/JMHReif" title="@JMHReif"></a>
             <a class="icon icon-github" href="https://github.com/JMHReif" title="GitHub"></a>
@@ -626,7 +646,8 @@
         <div class="person-avatar"><img src="https://avatars.githubusercontent.com/u/349507?v=4" alt="Dan Vega"></div>
         <div class="person-info">
           <h4>Dan Vega</h4>
-          <p>Java Champion, Spring Developer Advocate, YouTube educator</p>
+          <span class="badge-champion">Java Champion</span>
+          <p>Spring Developer Advocate, YouTube educator</p>
           <div class="person-links">
             <a class="icon icon-x" href="https://twitter.com/therealdanvega" title="@therealdanvega"></a>
             <a class="icon icon-bluesky" href="https://bsky.app/profile/danvega.dev" title="Bluesky"></a>
@@ -655,7 +676,8 @@
         <div class="person-avatar"><img src="https://avatars.githubusercontent.com/u/167926?v=4" alt="Craig Walls"></div>
         <div class="person-info">
           <h4>Craig Walls</h4>
-          <p>Java Champion, Author of <em>Spring AI in Action</em></p>
+          <span class="badge-champion">Java Champion</span>
+          <p>Author of <em>Spring AI in Action</em></p>
           <div class="person-links">
             <a class="icon icon-x" href="https://twitter.com/habuma" title="@habuma"></a>
             <a class="icon icon-bluesky" href="https://bsky.app/profile/habuma.com" title="Bluesky"></a>
@@ -669,7 +691,8 @@
         <div class="person-avatar"><img src="https://avatars.githubusercontent.com/u/65043?v=4" alt="James Ward"></div>
         <div class="person-info">
           <h4>James Ward</h4>
-          <p>Java Champion, Developer Advocate &mdash; Java, Kotlin, Cloud, AI</p>
+          <span class="badge-champion">Java Champion</span>
+          <p>Developer Advocate &mdash; Java, Kotlin, Cloud, AI</p>
           <div class="person-links">
             <a class="icon icon-x" href="https://twitter.com/_jamesward" title="@_JamesWard"></a>
             <a class="icon icon-bluesky" href="https://bsky.app/profile/jamesward.com" title="Bluesky"></a>
@@ -702,7 +725,7 @@
       </div>
 
       <div class="card">
-        <span class="card-badge badge-resource">Blog</span>
+        <span class="card-badge badge-assistant">Blog</span>
         <h3>Java Relevance in the AI Era</h3>
         <p>RedMonk analysis of Java's position as agent frameworks emerge</p>
         <div class="card-links">
@@ -711,7 +734,7 @@
       </div>
 
       <div class="card">
-        <span class="card-badge badge-resource">Resource</span>
+        <span class="card-badge badge-inference">Resource</span>
         <h3>Awesome Spring AI</h3>
         <p>Curated list of Spring AI resources, tools, and tutorials</p>
         <div class="card-links">
@@ -720,7 +743,7 @@
       </div>
 
       <div class="card">
-        <span class="card-badge badge-resource">Book</span>
+        <span class="card-badge badge-framework">Book</span>
         <h3>Spring AI in Action (Manning)</h3>
         <p>Book by Craig Walls &mdash; comprehensive guide to building AI apps with Spring</p>
         <div class="card-links">
@@ -729,7 +752,7 @@
       </div>
 
       <div class="card">
-        <span class="card-badge badge-resource">Resource</span>
+        <span class="card-badge badge-inference">Resource</span>
         <h3>Production LangChain4j &mdash; Inside.java</h3>
         <p>Advanced RAG, agentic workflows, and production tips from Devoxx Belgium</p>
         <div class="card-links">
@@ -738,7 +761,7 @@
       </div>
 
       <div class="card">
-        <span class="card-badge badge-resource">Resource</span>
+        <span class="card-badge badge-inference">Resource</span>
         <h3>Google ADK Java Codelab</h3>
         <p>Hands-on: build AI agents in Java with Google's ADK</p>
         <div class="card-links">
@@ -747,7 +770,7 @@
       </div>
 
       <div class="card">
-        <span class="card-badge badge-resource">Resource</span>
+        <span class="card-badge badge-video">Resource</span>
         <h3>Devoxx YouTube</h3>
         <p>Thousands of conference talks on Java, AI, cloud, and architecture</p>
         <div class="card-links">
@@ -756,7 +779,7 @@
       </div>
 
       <div class="card">
-        <span class="card-badge badge-resource">Videos</span>
+        <span class="card-badge badge-video">Videos</span>
         <h3>Coffee + Software</h3>
         <p>Spring ecosystem, AI integration, and Java community</p>
         <div class="card-links">
@@ -765,7 +788,7 @@
       </div>
 
       <div class="card">
-        <span class="card-badge badge-resource">Resource</span>
+        <span class="card-badge badge-inference">Resource</span>
         <h3>Foojay Podcast: Java AI Revolution</h3>
         <p>Agents, MCP, graph databases &mdash; developers navigate the AI revolution</p>
         <div class="card-links">
@@ -774,7 +797,7 @@
       </div>
 
       <div class="card">
-        <span class="card-badge badge-resource">Livestream</span>
+        <span class="card-badge badge-video">Livestream</span>
         <h3>AI &amp; Java on Serverless Office Hours</h3>
         <div class="card-links">
           <a class="icon icon-youtube" href="https://www.youtube.com/watch?v=my2bQtHBUeY" title="YouTube"></a>
