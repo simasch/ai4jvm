@@ -354,17 +354,39 @@
 
 <hr class="section-divider">
 
-<!-- CODE ASSISTANTS -->
+<!-- CODE ASSISTANTS & JAVA DEV TOOLS -->
 <section id="assistants">
   <div class="container">
     <h2 class="section-title">Java with Code Assistants</h2>
-    <p class="section-subtitle">AI-powered tools that make Java development faster and more productive.</p>
+    <p class="section-subtitle">Technologies that supercharge Java development when paired with AI code assistants &mdash; from MCP servers that give agents live Javadoc access, to reusable skill packages and IDE integrations.</p>
     <div class="card-grid">
+
+      <div class="card">
+        <span class="card-badge badge-assistant">MCP Server</span>
+        <h3>Javadocs.dev MCP Server</h3>
+        <p>Gives AI assistants live access to Java, Kotlin, and Scala library documentation from Maven Central. Six tools including latest-version lookup, Javadoc symbol browsing, and source file retrieval. Connect any MCP client via Streamable HTTP.</p>
+        <div class="card-links">
+          <a href="https://www.javadocs.dev/mcp">Connect (MCP)</a>
+          <a href="https://hub.docker.com/mcp/server/javadocs/overview">Docker MCP</a>
+          <a href="https://github.com/jamesward/javadoccentral">GitHub</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-badge badge-assistant">Skills</span>
+        <h3>SkillsJars</h3>
+        <p>A packaging format and registry for distributing reusable AI agent skills as Maven/Gradle JARs. Skills are Markdown files (<code>SKILL.md</code>) under <code>META-INF/skills/</code> that teach AI agents domain-specific patterns. Discover and load skills on demand in Claude Code, Kiro, and Spring AI apps.</p>
+        <div class="card-links">
+          <a href="https://www.skillsjars.com/">Registry</a>
+          <a href="https://github.com/spring-ai-community/spring-ai-agent-utils">Agent Utils</a>
+          <a href="https://github.com/spring-ai-community/spring-testing-skills">Testing Skills</a>
+        </div>
+      </div>
 
       <div class="card">
         <span class="card-badge badge-assistant">Assistant</span>
         <h3>Claude Code</h3>
-        <p>Anthropic's agentic coding tool, right in your terminal. Understands entire codebases, makes multi-file changes, runs tests, and iterates. Java's strict type system catches AI mistakes at compile time, making it an ideal pairing.</p>
+        <p>Anthropic's agentic coding tool, right in your terminal. Understands entire codebases, makes multi-file changes, runs tests, and iterates. Java's strict type system catches AI mistakes at compile time, making it an ideal pairing. Supports MCP servers and SkillsJars for extended Java context.</p>
         <div class="card-links">
           <a href="https://code.claude.com/docs/en/overview">Docs</a>
         </div>
@@ -373,7 +395,7 @@
       <div class="card">
         <span class="card-badge badge-assistant">Assistant</span>
         <h3>GitHub Copilot</h3>
-        <p>Inline code completions and chat powered by LLMs. Excellent Java support in VS Code and JetBrains IDEs. Understands Spring Boot patterns, JPA entities, and Stream API fluently. Agent mode for multi-step tasks.</p>
+        <p>Inline code completions and chat powered by LLMs. Excellent Java support in VS Code and JetBrains IDEs. Understands Spring Boot patterns, JPA entities, and Stream API fluently. Agent mode for multi-step tasks with MCP server support.</p>
         <div class="card-links">
           <a href="https://github.com/features/copilot">Website</a>
         </div>
