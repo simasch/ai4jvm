@@ -14,4 +14,7 @@ Single-page website (`index.html`) — HTML + inline CSS, no build step.
 - Keep descriptions concise (2-3 sentences) and factual
 - Cards use badge classes: `badge-framework`, `badge-inference`, `badge-assistant`, `badge-resource`
 - Each card has a title, description, and links (Docs, GitHub, Website, etc.)
-- The "Java with Code Assistants" section prioritizes tools that bridge AI assistants and the Java ecosystem (MCP servers, skill registries, IDE plugins, context providers) over general-purpose AI tools
+
+## Fetching
+
+- When needed use a browser tool to fetch web pages
