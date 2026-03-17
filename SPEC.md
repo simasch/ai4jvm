@@ -361,6 +361,12 @@ Notes:
 - **Description:** Agents, MCP, graph databases — developers navigate the AI revolution
 - **Links:** [Podcast](https://foojay.io/today/foojay-podcast-86/)
 
+### Building Java AI Agents with Spring AI (AWS Workshop)
+
+- **Badge:** Workshop
+- **Description:** Hands-on AWS workshop for building intelligent AI agents with Spring AI and AWS services, including deployment to EKS
+- **Links:** [Workshop](https://catalog.workshops.aws/java-spring-ai-agents/en-US)
+
 ## AI & Java on Serverless Office Hours
 - **Badege:** Livestream
 - **Links:** https://www.youtube.com/watch?v=my2bQtHBUeY
