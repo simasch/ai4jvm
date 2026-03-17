@@ -255,6 +255,15 @@ Notes:
 - **Role:** Developer Advocate at Neo4j
 - **Links:** [@JMHReif](https://twitter.com/JMHReif) · [GitHub](https://github.com/JMHReif) · [LinkedIn](https://www.linkedin.com/in/jmhreif/) · [Website](https://jmhreif.com)
 
+### Oleg Šelajev
+
+- **Badge:** Person
+- **Java Champion**
+- **Initials:** OŠ
+- **Photo:** https://avatars.githubusercontent.com/u/426039?v=4
+- **Role:** Developer Relations Lead for AI — Docker
+- **Links:** [@shelajev](https://twitter.com/shelajev) · [GitHub](https://github.com/shelajev) · [LinkedIn](https://www.linkedin.com/in/shelajev/)
+
 ### Bartosz Sorrentino
 
 - **Badge:** Person
