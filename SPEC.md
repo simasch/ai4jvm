@@ -368,7 +368,8 @@ Notes:
 - **Links:** [Workshop](https://catalog.workshops.aws/java-spring-ai-agents/en-US)
 
 ## AI & Java on Serverless Office Hours
-- **Badege:** Livestream
+- **Badge:** Livestream
+- **Description:** James Ward and Julian Wood explore building AI-powered Java apps — MCP integration, agent architectures with AgentCore, GraalVM optimization for AI workloads, and secure auth patterns for AI services on serverless
 - **Links:** https://www.youtube.com/watch?v=my2bQtHBUeY
 
 ---
