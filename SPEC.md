@@ -30,6 +30,7 @@ AI4JVM is a curated guide to the Java AI ecosystem — a single-page website cov
 Latest headlines about the Java AI ecosystem. Each item has a link and brief description.
 Note: Order by date, newest first. Don't show news older than 3 months
 
+- https://blog.jetbrains.com/kotlin/2026/03/introducing-tracy-the-ai-observability-library-for-kotlin/
 - https://www.tmdevlab.com/mcp-server-performance-benchmark.html
 - https://thenewstack.io/2026-java-ai-apps/
 - https://spring.io/blog/2026/01/23/spring-ai-2-0-0-M2-available-now
@@ -89,6 +90,11 @@ Note: Order by date, newest first. Don't show news older than 3 months
 - **Badge:** SDK
 - **Description:** Official Java SDK for the Claude Messages API. Streaming, retries, structured outputs, extended thinking, code execution, and files API. Build Java apps powered by Claude.
 - **Links:** [GitHub](https://github.com/anthropics/anthropic-sdk-java)
+
+### Tracy (JetBrains)
+- **Badge:** Library
+- **Description:** AI tracing library for Kotlin and Java. Captures structured traces from LLM interactions — messages, cost, token usage, and execution time. Implements OpenTelemetry Generative AI Semantic Conventions with exports to Langfuse, Weights & Biases, and more.
+- **Links:** [Docs](https://jetbrains.github.io/tracy/latest) · [GitHub](https://github.com/JetBrains/tracy)
 
 ---
 
