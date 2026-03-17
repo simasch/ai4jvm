@@ -103,6 +103,11 @@ Technologies that supercharge Java development when paired with AI code assistan
 - **Description:** Gives AI assistants live access to Java, Kotlin, and Scala library documentation from Maven Central. Six tools including latest-version lookup, Javadoc symbol browsing, and source file retrieval. Connect any MCP client via Streamable HTTP.
 - **Links:** website: https://www.javadocs.dev/
 
+### JetBrains AI
+- **Badge:** Assistant
+- **Description:** AI-powered coding assistance built into IntelliJ IDEA and all JetBrains IDEs. Context-aware code completion, next-edit suggestions, and an agent-mode chat for refactoring, test generation, and complex tasks. Deep understanding of Java, Kotlin, and Scala project conventions. Supports cloud LLMs (Gemini, OpenAI, Anthropic) plus bring-your-own-key.
+- **Links:** [Website](https://www.jetbrains.com/ai/) · [Docs](https://www.jetbrains.com/help/idea/ai-assistant.html)
+
 ### SkillsJars
 - **Badge:** Skills
 - **Description:** A packaging format and registry for distributing reusable AI agent skills as Maven/Gradle JARs. Skills are Markdown files (`SKILL.md`) under `META-INF/skills/` that teach AI agents domain-specific patterns. Discover and load skills on demand in Claude Code, Kiro, and Spring AI apps.
