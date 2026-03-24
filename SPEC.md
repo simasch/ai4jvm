@@ -96,6 +96,11 @@ Note: Order by date, newest first. Don't show news older than 3 months
 - **Description:** AI tracing library for Kotlin and Java. Captures structured traces from LLM interactions — messages, cost, token usage, and execution time. Implements OpenTelemetry Generative AI Semantic Conventions with exports to Langfuse, Weights & Biases, and more.
 - **Links:** [Docs](https://jetbrains.github.io/tracy/latest) · [GitHub](https://github.com/JetBrains/tracy)
 
+### Docling Java
+- **Badge:** Library
+- **Description:** Docling Java is the official Java client and tooling for Docling — a suite that converts messy documents into structured data and simplifies downstream document and AI processing by detecting tables, formulas, reading order, OCR, and much more.
+- **Links:** [Docs](https://docling-project.github.io/docling-java/current) · [GitHub](https://github.com/docling-project/docling-java)
+
 ---
 
 ## Java with Code Assistants
@@ -212,7 +217,7 @@ Notes:
 - **Badge:** Person
 - **Initials:** DL
 - **Photo:** https://avatars.githubusercontent.com/u/3154404?v=4
-- **Role:** Creator of LangChain4j, Principal Architect — Microsoft
+- **Role:** Creator of LangChain4j, Principal Architect — IBM
 - **Links:** [Bluesky](https://bsky.app/profile/dmythro.bsky.social) · [GitHub](https://github.com/dliubarskyi) · [LinkedIn](https://www.linkedin.com/in/dmytro-liubarskyi/)
 
 ### Josh Long
@@ -311,6 +316,24 @@ Notes:
 - **Photo:** https://avatars.githubusercontent.com/u/65043?v=4
 - **Role:** Developer Advocate — Java, Kotlin, Cloud, AI
 - **Links:** [@_JamesWard](https://twitter.com/_jamesward) · [Bluesky](https://bsky.app/profile/jamesward.com) · [GitHub](https://github.com/jamesward) · [LinkedIn](https://www.linkedin.com/in/jamesward) · [Blog](https://jamesward.com)
+
+### Mario Fusco
+
+- **Badge:** Person
+- **Java Champion**
+- **Initials:** MF
+- **Photo:** https://avatars.githubusercontent.com/u/372781?v=4
+- **Role:** LangChain4j core team, Sr. Principal Software Engineer at IBM
+- **Links:** [@mariofusco](https://x.com/mariofusco) · [GitHub](https://github.com/mariofusco) · [LinkedIn](https://www.linkedin.com/in/mario-fusco-3467213/)
+
+### Eric Deandrea
+
+- **Badge:** Person
+- **Java Champion**
+- **Initials:** ED
+- **Photo:** https://avatars.githubusercontent.com/u/363447?v=4
+- **Role:** [Docling Java](https://docling-project.github.io/docling-java/current) project lead, contributor to LangChain4j, Sr. Principal Software Engineer at IBM
+- **Links:** [Bluesky](https://bsky.app/profile/ericdeandrea.dev) · [@edeandrea](https://x.com/edeandrea) · [GitHub](https://github.com/edeandrea) · [LinkedIn](https://www.linkedin.com/in/edeandrea/)
 
 ---
 
