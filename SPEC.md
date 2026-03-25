@@ -91,6 +91,11 @@ Note: Order by date, newest first. Don't show news older than 3 months
 - **Description:** Official Java SDK for the Claude Messages API. Streaming, retries, structured outputs, extended thinking, code execution, and files API. Build Java apps powered by Claude.
 - **Links:** [GitHub](https://github.com/anthropics/anthropic-sdk-java)
 
+### GitHub Copilot SDK for Java
+- **Badge:** SDK
+- **Description:** Official Java SDK for embedding the GitHub Copilot agentic engine directly into Java applications. Uses the same agentic harness that powers the Copilot CLI — exposes planning, tool calling, file editing, and MCP integration via a simple Java API. Currently in technical preview.
+- **Links:** [Docs](https://github.github.com/copilot-sdk-java/) · [GitHub](https://github.com/github/copilot-sdk-java)
+
 ### Tracy (JetBrains)
 - **Badge:** Library
 - **Description:** AI tracing library for Kotlin and Java. Captures structured traces from LLM interactions — messages, cost, token usage, and execution time. Implements OpenTelemetry Generative AI Semantic Conventions with exports to Langfuse, Weights & Biases, and more.
