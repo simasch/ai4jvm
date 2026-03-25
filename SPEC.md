@@ -119,6 +119,11 @@ Technologies that supercharge Java development when paired with AI code assistan
 - **Description:** A packaging format and registry for distributing reusable AI agent skills as Maven/Gradle JARs. Skills are Markdown files (`SKILL.md`) under `META-INF/skills/` that teach AI agents domain-specific patterns. Discover and load skills on demand in Claude Code, Kiro, and Spring AI apps.
 - **Links:** website: https://www.skillsjars.com/
 
+### Awesome GitHub Copilot
+- **Badge:** Skills
+- **Description:** Awesome Copilot Skills is a curated registry of reusable AI agent skills that developers can plug into agents, providing ready-made capabilities, prompts, and workflows. It helps Java AI developers quickly extend agent functionality without building everything from scratch.
+- **Links:** website: https://awesome-copilot.github.com/skills/
+
 ---
 
 ## Inference & Training
