@@ -73,6 +73,11 @@ Note: Order by date, newest first. Don't show news older than 3 months
 - **Description:** Enterprise-grade Quarkus extension for LangChain4j. Native compilation with GraalVM, built-in observability (metrics, tracing, auditing), and Dev UI tooling. Maintained by Red Hat & IBM.
 - **Links:** [Docs](https://docs.quarkiverse.io/quarkus-langchain4j/dev/index.html) · [GitHub](https://github.com/quarkiverse/quarkus-langchain4j)
 
+### LangChain4j CDI
+- **Badge:** Framework
+- **Description:** CDI extension for LangChain4j (part of the LangChain4j project) that brings AI services to Jakarta EE and MicroProfile applications. Inject AI services as CDI beans with `@RegisterAIService`, configure via MicroProfile Config, and add resilience with Fault Tolerance. Supports Quarkus, Helidon, WildFly, Payara, GlassFish, Liberty, and any CDI-capable runtime.
+- **Links:** [GitHub](https://github.com/langchain4j/langchain4j-cdi)
+
 ### LangGraph4j
 - **Badge:** Framework
 - **Description:** Build stateful, multi-agent applications with cyclical graphs. Inspired by Python's LangGraph, works with both LangChain4j and Spring AI. Persistent checkpoints, deep agent architectures, and a Studio web UI.
