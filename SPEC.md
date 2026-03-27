@@ -2,6 +2,10 @@
 
 AI4JVM is a curated guide to the Java AI ecosystem — a single-page website covering agent frameworks, inference engines, code assistants, key people, and learning resources.
 
+## Guidelines
+
+- Validate accuracy with recent web information
+
 ## Site Structure
 
 - Single `index.html` file (HTML + inline CSS, no build step)
@@ -55,7 +59,7 @@ Note: Order by date, newest first. Don't show news older than 3 months
 
 ### LangChain4j
 - **Badge:** Framework
-- **Description:** The most popular Java LLM library. Unified API across 20+ LLM providers and 30+ embedding stores. Three levels of abstraction from low-level prompts to high-level AI Services. Supports RAG, tool calling, MCP, and agents.
+- **Description:** The most popular Java LLM library. Unified API across 20+ LLM providers and 20+ embedding stores. Three levels of abstraction from low-level prompts to high-level AI Services. Supports RAG, tool calling, MCP, and agents.
 - **Links:** [Docs](https://docs.langchain4j.dev/) · [GitHub](https://github.com/langchain4j/langchain4j)
 
 ### Embabel
@@ -90,12 +94,12 @@ Note: Order by date, newest first. Don't show news older than 3 months
 
 ### Semantic Kernel (Java)
 - **Badge:** Framework
-- **Description:** Microsoft's AI orchestration SDK with Java support. Merged with AutoGen into a unified Microsoft Agent Framework with deep Azure integration. Supports prompt chaining, planning, and memory.
+- **Description:** Microsoft's AI orchestration SDK with first-class Java support. Provides prompt chaining, planning, memory, and agent framework abstractions with deep Azure integration.
 - **Links:** [GitHub](https://github.com/microsoft/semantic-kernel-java)
 
 ### MCP Java SDK
 - **Badge:** SDK
-- **Description:** The official Java SDK for Model Context Protocol servers and clients. Co-maintained by the Spring AI team and Anthropic. Sync/async, STDIO/SSE/Streamable HTTP transports, OAuth support.
+- **Description:** The official Java SDK for Model Context Protocol servers and clients. Maintained by the Spring AI team. Sync/async, STDIO/SSE/Streamable HTTP transports, OAuth support via Spring integration.
 - **Links:** [Docs](https://modelcontextprotocol.io/sdk/java/mcp-overview) · [GitHub](https://github.com/modelcontextprotocol/java-sdk)
 
 ### Anthropic Java SDK
@@ -115,12 +119,12 @@ Note: Order by date, newest first. Don't show news older than 3 months
 
 ### Docling Java
 - **Badge:** Library
-- **Description:** Docling Java is the official Java client and tooling for Docling — a suite that converts messy documents into structured data and simplifies downstream document and AI processing by detecting tables, formulas, reading order, OCR, and much more.
+- **Description:** Official Java client for Docling Serve — invoke document conversion, table detection, formula recognition, reading order analysis, OCR, and more from Java via the Docling Serve backend.
 - **Links:** [Docs](https://docling-project.github.io/docling-java/current) · [GitHub](https://github.com/docling-project/docling-java)
 
 ### OmniHai
 - **Badge:** Library
-- **Description:** Unified Java AI utility library for Jakarta EE and MicroProfile. Single API across 10+ providers with zero external runtime dependencies — just java.net.http.HttpClient. Chat, streaming, structured outputs, web search, translation, moderation, image/audio generation, and more in a ~210 KB JAR.
+- **Description:** Unified Java AI utility library for Jakarta EE and MicroProfile. Single API across 10 providers with zero external runtime dependencies — just java.net.http.HttpClient. Chat, streaming, structured outputs, web search, translation, and moderation in a lightweight JAR.
 - **Links:** [Website](https://omnihai.org) · [GitHub](https://github.com/omnifaces/omnihai) · [Javadoc](https://javadoc.io/doc/org.omnifaces/omnihai)
 
 ---
@@ -164,12 +168,12 @@ Run models, train classifiers, and do ML inference directly on the JVM — no Py
 
 ### Deep Java Library (DJL)
 - **Badge:** Inference
-- **Description:** AWS's high-level, engine-agnostic deep learning framework. Supports PyTorch, TensorFlow, and MXNet backends. Used in production at Netflix and Amazon for real-time inference. DJLServing provides high-performance model serving.
+- **Description:** AWS's high-level, engine-agnostic deep learning framework. Supports PyTorch, TensorFlow, ONNX Runtime, and XGBoost backends. DJLServing provides high-performance model serving.
 - **Links:** [GitHub](https://github.com/deepjavalibrary/djl) · [InfoQ](https://www.infoq.com/articles/java-machine-learning-djl/)
 
 ### ONNX Runtime Java
 - **Badge:** Inference
-- **Description:** Run transformer and classical ML models directly on the JVM. Hardware acceleration via CUDA, ROCm, DirectML, and more. Enables deploying scikit-learn, PyTorch, and HuggingFace models in Java without Python or REST wrappers.
+- **Description:** Run transformer and classical ML models directly on the JVM. Hardware acceleration via CUDA, DirectML, CoreML, and more. Enables deploying scikit-learn, PyTorch, and HuggingFace models as ONNX in Java without Python at inference time.
 - **Links:** [Docs](https://onnxruntime.ai/docs/get-started/with-java.html) · [InfoQ Guide](https://www.infoq.com/articles/onnx-ai-inference-with-java/)
 
 ### Tribuo
@@ -179,12 +183,12 @@ Run models, train classifiers, and do ML inference directly on the JVM — no Py
 
 ### GPULlama3.java
 - **Badge:** Inference
-- **Description:** First Java-native Llama 3 implementation with automatic GPU acceleration via TornadoVM. No CUDA or native code needed — GPU-accelerated LLM inference in pure Java. From the University of Manchester's Beehive Lab.
+- **Description:** Java-native LLM inference with automatic GPU acceleration via TornadoVM. Supports Llama 3, Mistral, Qwen, Phi-3, and IBM Granite models in GGUF format. TornadoVM translates Java bytecode to GPU kernels (OpenCL, PTX, SPIR-V). From the University of Manchester's Beehive Lab.
 - **Links:** [InfoQ](https://www.infoq.com/news/2025/06/gpullama3-java-gpu-llm/)
 
 ### TensorFlow Java
 - **Badge:** Training
-- **Description:** Official Java bindings for TensorFlow. Train and deploy TF models entirely in Java. Used by Tribuo under the hood. Suitable for teams that want to stay within the JVM ecosystem while using TensorFlow's model formats.
+- **Description:** Java bindings for TensorFlow, maintained by the TensorFlow JVM SIG. Train and deploy TF models entirely in Java. Available as an optional Tribuo integration. Suitable for teams that want to stay within the JVM ecosystem while using TensorFlow's model formats.
 - **Links:** [Docs](https://www.tensorflow.org/jvm) · [GitHub](https://github.com/tensorflow/java)
 
 ---
@@ -201,6 +205,7 @@ Notes:
 ### Bruno Borges
 
 - **Badge:** Person
+- **Java Champion**
 - **Initials:** BB
 - **Photo:** https://avatars.githubusercontent.com/u/129743?v=4
 - **Role:** Principal Program Manager — Microsoft Java Engineering Group
@@ -209,6 +214,7 @@ Notes:
 ### Markus Eisele
 
 - **Badge:** Person
+- **Java Champion**
 - **Initials:** ME
 - **Photo:** https://avatars.githubusercontent.com/u/1358554?v=4
 - **Role:** Developer Advocate — IBM Research, JavaLand founder
@@ -226,6 +232,7 @@ Notes:
 ### Rod Johnson
 
 - **Badge:** Person
+- **Java Champion**
 - **Initials:** RJ
 - **Photo:** https://avatars.githubusercontent.com/u/1916583?v=4
 - **Role:** Creator of Spring Framework, CEO of Embabel
@@ -234,6 +241,7 @@ Notes:
 ### Guillaume Laforge
 
 - **Badge:** Person
+- **Java Champion**
 - **Initials:** GL
 - **Photo:** https://avatars.githubusercontent.com/u/47907?v=4
 - **Role:** Google Developer Advocate — Java, Groovy, AI
@@ -250,9 +258,10 @@ Notes:
 ### Josh Long
 
 - **Badge:** Person
+- **Java Champion**
 - **Initials:** JL
 - **Photo:** https://avatars.githubusercontent.com/u/54473?v=4
-- **Role:** Spring Developer Advocate, Spring AI talks
+- **Role:** Spring Developer Advocate at Broadcom
 - **Links:** [@starbuxman](https://twitter.com/starbuxman) · [Bluesky](https://bsky.app/profile/starbuxman.joshlong.com) · [GitHub](https://github.com/joshlong) · [LinkedIn](https://www.linkedin.com/in/joshlong/) · [Spring Blog](https://spring.io/authors/joshlong/)
 
 ### T. Jake Luciani
@@ -282,6 +291,7 @@ Notes:
 ### Jennifer Reif
 
 - **Badge:** Person
+- **Java Champion**
 - **Initials:** JR
 - **Photo:** https://avatars.githubusercontent.com/u/14850786?v=4
 - **Role:** Developer Advocate at Neo4j
@@ -315,6 +325,7 @@ Notes:
 ### Dan Vega
 
 - **Badge:** Person
+- **Java Champion**
 - **Initials:** DV
 - **Photo:** https://avatars.githubusercontent.com/u/349507?v=4
 - **Role:** Spring Developer Advocate, YouTube educator
@@ -325,12 +336,13 @@ Notes:
 - **Badge:** Person
 - **Initials:** DV
 - **Photo:** https://avatars.githubusercontent.com/u/12485205?v=4
-- **Role:** Engineering Manager (AI/ML) at Meta
+- **Role:** Lead Developer Advocate at Meta
 - **Links:** [@DmitryVinnik](https://twitter.com/DmitryVinnik) · [GitHub](https://github.com/dmitryvinn) · [LinkedIn](https://www.linkedin.com/in/dmitry-vinnik/) · [Blog](https://dvinnik.dev/)
 
 ### Craig Walls
 
 - **Badge:** Person
+- **Java Champion**
 - **Initials:** CW
 - **Photo:** https://avatars.githubusercontent.com/u/167926?v=4
 - **Role:** Author of *Spring AI in Action*
@@ -339,6 +351,7 @@ Notes:
 ### James Ward
 
 - **Badge:** Person
+- **Java Champion**
 - **Initials:** JW
 - **Photo:** https://avatars.githubusercontent.com/u/65043?v=4
 - **Role:** Developer Advocate — Java, Kotlin, Cloud, AI

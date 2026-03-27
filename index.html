@@ -335,7 +335,7 @@
       <div class="card">
         <span class="card-badge badge-framework">Framework</span>
         <h3><a href="https://docs.langchain4j.dev/">LangChain4j</a></h3>
-        <p>The most popular Java LLM library. Unified API across 20+ LLM providers and 30+ embedding stores. Three levels of abstraction from low-level prompts to high-level AI Services. Supports RAG, tool calling, MCP, and agents.</p>
+        <p>The most popular Java LLM library. Unified API across 20+ LLM providers and 20+ embedding stores. Three levels of abstraction from low-level prompts to high-level AI Services. Supports RAG, tool calling, MCP, and agents.</p>
         <div class="card-links">
           <a class="icon icon-web" href="https://docs.langchain4j.dev/" title="Docs"></a>
           <a class="icon icon-github" href="https://github.com/langchain4j/langchain4j" title="GitHub"></a>
@@ -406,7 +406,7 @@
       <div class="card">
         <span class="card-badge badge-framework">Framework</span>
         <h3><a href="https://github.com/microsoft/semantic-kernel-java">Semantic Kernel (Java)</a></h3>
-        <p>Microsoft's AI orchestration SDK with Java support. Merged with AutoGen into a unified Microsoft Agent Framework with deep Azure integration. Supports prompt chaining, planning, and memory.</p>
+        <p>Microsoft's AI orchestration SDK with first-class Java support. Provides prompt chaining, planning, memory, and agent framework abstractions with deep Azure integration.</p>
         <div class="card-links">
           <a class="icon icon-github" href="https://github.com/microsoft/semantic-kernel-java" title="GitHub"></a>
         </div>
@@ -415,7 +415,7 @@
       <div class="card">
         <span class="card-badge badge-inference">SDK</span>
         <h3><a href="https://modelcontextprotocol.io/sdk/java/mcp-overview">MCP Java SDK</a></h3>
-        <p>The official Java SDK for Model Context Protocol servers and clients. Co-maintained by the Spring AI team and Anthropic. Sync/async, STDIO/SSE/Streamable HTTP transports, OAuth support.</p>
+        <p>The official Java SDK for Model Context Protocol servers and clients. Maintained by the Spring AI team. Sync/async, STDIO/SSE/Streamable HTTP transports, OAuth support via Spring integration.</p>
         <div class="card-links">
           <a class="icon icon-web" href="https://modelcontextprotocol.io/sdk/java/mcp-overview" title="Docs"></a>
           <a class="icon icon-github" href="https://github.com/modelcontextprotocol/java-sdk" title="GitHub"></a>
@@ -454,7 +454,7 @@
       <div class="card">
         <span class="card-badge badge-inference">Library</span>
         <h3><a href="https://docling-project.github.io/docling-java/current">Docling Java</a></h3>
-        <p>Docling Java is the official Java client and tooling for Docling &mdash; a suite that converts messy documents into structured data and simplifies downstream document and AI processing by detecting tables, formulas, reading order, OCR, and much more.</p>
+        <p>Official Java client for Docling Serve &mdash; invoke document conversion, table detection, formula recognition, reading order analysis, OCR, and more from Java via the Docling Serve backend.</p>
         <div class="card-links">
           <a class="icon icon-web" href="https://docling-project.github.io/docling-java/current" title="Docs"></a>
           <a class="icon icon-github" href="https://github.com/docling-project/docling-java" title="GitHub"></a>
@@ -464,7 +464,7 @@
       <div class="card">
         <span class="card-badge badge-inference">Library</span>
         <h3>OmniHai</h3>
-        <p>Unified Java AI utility library for Jakarta EE and MicroProfile. Single API across 10+ providers with zero external runtime dependencies &mdash; just java.net.http.HttpClient. Chat, streaming, structured outputs, web search, translation, moderation, image/audio generation, and more in a ~210 KB JAR.</p>
+        <p>Unified Java AI utility library for Jakarta EE and MicroProfile. Single API across 10 providers with zero external runtime dependencies &mdash; just java.net.http.HttpClient. Chat, streaming, structured outputs, web search, translation, and moderation in a lightweight JAR.</p>
         <div class="card-links">
           <a class="icon icon-web" href="https://omnihai.org" title="Website"></a>
           <a class="icon icon-github" href="https://github.com/omnifaces/omnihai" title="GitHub"></a>
@@ -549,7 +549,7 @@
       <div class="card">
         <span class="card-badge badge-inference">Inference</span>
         <h3><a href="https://github.com/deepjavalibrary/djl">Deep Java Library (DJL)</a></h3>
-        <p>AWS's high-level, engine-agnostic deep learning framework. Supports PyTorch, TensorFlow, and MXNet backends. Used in production at Netflix and Amazon for real-time inference. DJLServing provides high-performance model serving.</p>
+        <p>AWS's high-level, engine-agnostic deep learning framework. Supports PyTorch, TensorFlow, ONNX Runtime, and XGBoost backends. DJLServing provides high-performance model serving.</p>
         <div class="card-links">
           <a class="icon icon-github" href="https://github.com/deepjavalibrary/djl" title="GitHub"></a>
           <a class="icon icon-web" href="https://www.infoq.com/articles/java-machine-learning-djl/" title="InfoQ"></a>
@@ -559,7 +559,7 @@
       <div class="card">
         <span class="card-badge badge-inference">Inference</span>
         <h3><a href="https://onnxruntime.ai/docs/get-started/with-java.html">ONNX Runtime Java</a></h3>
-        <p>Run transformer and classical ML models directly on the JVM. Hardware acceleration via CUDA, ROCm, DirectML, and more. Enables deploying scikit-learn, PyTorch, and HuggingFace models in Java without Python or REST wrappers.</p>
+        <p>Run transformer and classical ML models directly on the JVM. Hardware acceleration via CUDA, DirectML, CoreML, and more. Enables deploying scikit-learn, PyTorch, and HuggingFace models as ONNX in Java without Python at inference time.</p>
         <div class="card-links">
           <a class="icon icon-web" href="https://onnxruntime.ai/docs/get-started/with-java.html" title="Docs"></a>
           <a class="icon icon-web" href="https://www.infoq.com/articles/onnx-ai-inference-with-java/" title="InfoQ Guide"></a>
@@ -579,7 +579,7 @@
       <div class="card">
         <span class="card-badge badge-inference">Inference</span>
         <h3><a href="https://www.infoq.com/news/2025/06/gpullama3-java-gpu-llm/">GPULlama3.java</a></h3>
-        <p>First Java-native Llama 3 implementation with automatic GPU acceleration via TornadoVM. No CUDA or native code needed &mdash; GPU-accelerated LLM inference in pure Java. From the University of Manchester's Beehive Lab.</p>
+        <p>Java-native LLM inference with automatic GPU acceleration via TornadoVM. Supports Llama 3, Mistral, Qwen, Phi-3, and IBM Granite models in GGUF format. TornadoVM translates Java bytecode to GPU kernels (OpenCL, PTX, SPIR-V). From the University of Manchester's Beehive Lab.</p>
         <div class="card-links">
           <a class="icon icon-web" href="https://www.infoq.com/news/2025/06/gpullama3-java-gpu-llm/" title="InfoQ"></a>
         </div>
@@ -588,7 +588,7 @@
       <div class="card">
         <span class="card-badge badge-framework">Training</span>
         <h3><a href="https://www.tensorflow.org/jvm">TensorFlow Java</a></h3>
-        <p>Official Java bindings for TensorFlow. Train and deploy TF models entirely in Java. Used by Tribuo under the hood. Suitable for teams that want to stay within the JVM ecosystem while using TensorFlow's model formats.</p>
+        <p>Java bindings for TensorFlow, maintained by the TensorFlow JVM SIG. Train and deploy TF models entirely in Java. Available as an optional Tribuo integration. Suitable for teams that want to stay within the JVM ecosystem while using TensorFlow's model formats.</p>
         <div class="card-links">
           <a class="icon icon-web" href="https://www.tensorflow.org/jvm" title="Docs"></a>
           <a class="icon icon-github" href="https://github.com/tensorflow/java" title="GitHub"></a>
@@ -734,7 +734,7 @@
         <div class="person-info">
           <h4>Josh Long</h4>
           <span class="badge-champion">Java Champion</span>
-          <p>Spring Developer Advocate, Spring AI talks</p>
+          <p>Spring Developer Advocate at Broadcom</p>
           <div class="person-links">
             <a class="icon icon-x" href="https://twitter.com/starbuxman" title="@starbuxman"></a>
             <a class="icon icon-bluesky" href="https://bsky.app/profile/starbuxman.joshlong.com" title="Bluesky"></a>
@@ -860,7 +860,7 @@
         <div class="person-avatar"><img src="https://avatars.githubusercontent.com/u/12485205?v=4" alt="Dmitry Vinnik"></div>
         <div class="person-info">
           <h4>Dmitry Vinnik</h4>
-          <p>Engineering Manager (AI/ML) at Meta</p>
+          <p>Lead Developer Advocate at Meta</p>
           <div class="person-links">
             <a class="icon icon-x" href="https://twitter.com/DmitryVinnik" title="@DmitryVinnik"></a>
             <a class="icon icon-github" href="https://github.com/dmitryvinn" title="GitHub"></a>
