@@ -146,6 +146,11 @@ Technologies that supercharge Java development when paired with AI code assistan
 - **Description:** A packaging format and registry for distributing reusable AI agent skills as Maven/Gradle JARs. Skills are Markdown files (`SKILL.md`) under `META-INF/skills/` that teach AI agents domain-specific patterns. Discover and load skills on demand in Claude Code, Kiro, and Spring AI apps.
 - **Links:** website: https://www.skillsjars.com/
 
+### jvm-skills
+- **Badge:** Skills
+- **Description:** Curated directory of AI coding skills from JVM ecosystem engineers. Opinionated best-practice guides that AI tools (Claude Code, Cursor, Copilot) use as context — covering Spring Boot, jOOQ, Testcontainers, Docker, and more. Only lists skills that teach AI something it wouldn't know on its own.
+- **Links:** [Website](https://jvmskills.com) · [GitHub](https://github.com/jvm-skills/jvm-skills)
+
 ---
 
 ## Inference & Training
