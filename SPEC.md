@@ -160,6 +160,10 @@ Technologies that supercharge Java development when paired with AI code assistan
 ## Inference & Training
 
 Run models, train classifiers, and do ML inference directly on the JVM — no Python required.
+### Deliverance
+- **Badge:** Inference
+- **Description:** Deliverance is a Java inference engine capable of generating text, tokenizing input, computing embeddings, and more. Can be used as embedded library inside your Java application or as an HTTP server /chat/completion). Deliverance also provides chat and Rag Chat through vibrant-maven-plugin allowing you to chat with your code!  
+- **Links:** [GitHub](https://github.com/edwardcapriolo/deliverance) [Dockerhub](https://hub.docker.com/repository/docker/ecapriolo/deliverance/general)
 
 ### Jlama
 - **Badge:** Inference
