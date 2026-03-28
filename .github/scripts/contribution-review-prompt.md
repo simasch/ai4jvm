@@ -12,7 +12,7 @@ The following are the project's contribution guidelines (from CONTRIBUTING.md):
 
 Analyze the SPEC.md diff from this pull request and evaluate each added or changed item against the guidelines above.
 
-For EACH new item (library, framework, person, resource, etc.), assess whether it meets the contribution guidelines above. Also check if any links or claims in the contribution seem accurate based on what you know.
+For EACH new item (library, framework, person, resource, etc.), assess whether it meets the contribution guidelines above. Also use the fetch_webpage tool to verify that any URLs referenced in the contribution are reachable and that the described resources exist and are relevant.
 
 ## Output Format
 

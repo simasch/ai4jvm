@@ -2,6 +2,7 @@
 set -euo pipefail
 
 REPO_ROOT="$(git rev-parse --show-toplevel)"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Read SPEC.md and index.html from the PR head using git show.
 # The working directory remains the trusted base branch throughout — we never
@@ -9,47 +10,23 @@ REPO_ROOT="$(git rev-parse --show-toplevel)"
 SPEC=$(git show "$HEAD_SHA:SPEC.md")
 CURRENT_HTML=$(git show "$HEAD_SHA:index.html")
 
-# Build the LLM request — ask the model to update index.html to match SPEC.md
-PAYLOAD=$(jq -n \
-  --arg spec "$SPEC" \
-  --arg html "$CURRENT_HTML" \
-  '{
-    "model": "openai/gpt-4o",
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a web developer maintaining the AI4JVM website (a single-page HTML + inline CSS site, no build step). Your task is to update index.html so it exactly matches the provided SPEC.md. Preserve existing structure, styles, and inline CSS unless the spec requires changes. Return ONLY the complete updated index.html file — no explanation, no markdown code fences."
-      },
-      {
-        "role": "user",
-        "content": ("Current index.html:\n\n" + $html + "\n\nUpdate the above to match this SPEC.md:\n\n" + $spec + "\n\nReturn ONLY the complete updated index.html.")
-      }
-    ],
-    "max_tokens": 16384
-  }')
+# Build prompts for the LLM
+export SYSTEM_PROMPT="You are a web developer maintaining the AI4JVM website (a single-page HTML + inline CSS site, no build step). Your task is to update index.html so it exactly matches the provided SPEC.md. Preserve existing structure, styles, and inline CSS unless the spec requires changes. You may use the fetch_webpage tool to look up any URLs mentioned in SPEC.md if you need more context. Return ONLY the complete updated index.html file — no explanation, no markdown code fences."
+export USER_PROMPT="Current index.html:
 
-# Call GitHub Models
-HTTP_RESPONSE=$(curl -s -w "\n%{http_code}" "https://models.github.ai/inference/chat/completions" \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $GITHUB_TOKEN" \
-  -d "$PAYLOAD")
+$CURRENT_HTML
 
-HTTP_CODE=$(echo "$HTTP_RESPONSE" | tail -n1)
-RESPONSE=$(echo "$HTTP_RESPONSE" | head -n -1)
+Update the above to match this SPEC.md:
 
-if [ "$HTTP_CODE" != "200" ]; then
-  echo "Error: API call failed with HTTP $HTTP_CODE"
-  echo "$RESPONSE"
-  gh pr comment "$PR_NUMBER" --repo "$REPO" \
-    --body "❌ Site regeneration failed: API returned HTTP \`$HTTP_CODE\`."
-  exit 1
-fi
+$SPEC
 
-NEW_HTML=$(echo "$RESPONSE" | jq -r '.choices[0].message.content')
+Return ONLY the complete updated index.html."
+export MAX_TOKENS=16384
 
-if [ -z "$NEW_HTML" ] || [ "$NEW_HTML" = "null" ]; then
-  echo "Error: No content in response"
-  echo "$RESPONSE" | jq .
+# Call GitHub Models with tool-calling support (fetch_webpage tool)
+NEW_HTML=$(python3 "$SCRIPT_DIR/llm_with_tools.py")
+
+if [ -z "$NEW_HTML" ]; then
   gh pr comment "$PR_NUMBER" --repo "$REPO" \
     --body "❌ Site regeneration failed: no content returned from the model."
   exit 1
