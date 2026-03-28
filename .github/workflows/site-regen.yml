@@ -1,0 +1,71 @@
+name: Site Regen
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  pull-requests: write
+  models: read
+
+jobs:
+  unauthorized:
+    # Notify when /regen is used on a PR by someone without write access
+    if: >
+      github.event.issue.pull_request &&
+      contains(github.event.comment.body, '/regen') &&
+      github.event.comment.author_association != 'OWNER' &&
+      github.event.comment.author_association != 'MEMBER' &&
+      github.event.comment.author_association != 'COLLABORATOR'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify unauthorized user
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.issue.number }}
+          REPO: ${{ github.repository }}
+          COMMENTER: ${{ github.event.comment.user.login }}
+        run: |
+          gh pr comment "$PR_NUMBER" --repo "$REPO" \
+            --body "Sorry @$COMMENTER, the \`/regen\` command requires write access to this repository."
+
+  regen:
+    # Only run when a maintainer comments "/regen" on a PR
+    if: >
+      github.event.issue.pull_request &&
+      contains(github.event.comment.body, '/regen') &&
+      (
+        github.event.comment.author_association == 'OWNER' ||
+        github.event.comment.author_association == 'MEMBER' ||
+        github.event.comment.author_association == 'COLLABORATOR'
+      )
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get PR details
+        id: pr
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_JSON=$(gh api repos/${{ github.repository }}/pulls/${{ github.event.issue.number }})
+          echo "head_sha=$(echo "$PR_JSON" | jq -r '.head.sha')" >> "$GITHUB_OUTPUT"
+          echo "head_ref=$(echo "$PR_JSON" | jq -r '.head.ref')" >> "$GITHUB_OUTPUT"
+          echo "base_ref=$(echo "$PR_JSON" | jq -r '.base.ref')" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout base (trusted code)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.pr.outputs.base_ref }}
+          fetch-depth: 0
+
+      - name: Fetch PR head
+        run: git fetch origin ${{ steps.pr.outputs.head_sha }}
+
+      - name: Run site regen
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HEAD_SHA: ${{ steps.pr.outputs.head_sha }}
+          HEAD_REF: ${{ steps.pr.outputs.head_ref }}
+          PR_NUMBER: ${{ github.event.issue.number }}
+          REPO: ${{ github.repository }}
+        run: bash .github/scripts/site-regen.sh
