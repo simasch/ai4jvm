@@ -77,6 +77,16 @@ Note: Order by date, newest first. Don't show news older than 3 months
 - **Description:** Enterprise-grade Quarkus extension for LangChain4j. Native compilation with GraalVM, built-in observability (metrics, tracing, auditing), and Dev UI tooling. Maintained by Red Hat & IBM.
 - **Links:** [Docs](https://docs.quarkiverse.io/quarkus-langchain4j/dev/index.html) · [GitHub](https://github.com/quarkiverse/quarkus-langchain4j)
 
+### Helidon LangChain4j
+- **Badge:** Framework
+- **Description:** Oracle's Helidon framework integration with LangChain4j. Declarative AI Services via Helidon Inject, build-time code generation for GraalVM native images, streaming chat over Java Streams, guardrails, built-in metrics, and agentic support (workflows and dynamic agents). Runs on virtual threads.
+- **Links:** [Docs](https://helidon.io/docs/v4/se/ai/langchain4j/langchain4j) · [GitHub](https://github.com/helidon-io/helidon-examples/tree/helidon-4.x/examples/integrations/langchain4j)
+
+### Helidon MCP
+- **Badge:** Framework
+- **Description:** Helidon's Model Context Protocol server and client implementation. Declarative and imperative APIs for building MCP servers with tools, resources, and prompts. Streamable HTTP and SSE transports, virtual threads, build-time processing. From Oracle's Helidon team.
+- **Links:** [Docs](https://helidon.io/docs/v4/se/ai/mcp) · [GitHub](https://github.com/helidon-io/helidon-mcp)
+
 ### LangChain4j CDI
 - **Badge:** Framework
 - **Description:** CDI extension for LangChain4j (part of the LangChain4j project) that brings AI services to Jakarta EE and MicroProfile applications. Inject AI services as CDI beans with `@RegisterAIService`, configure via MicroProfile Config, and add resilience with Fault Tolerance. Supports Quarkus, Helidon, WildFly, Payara, GlassFish, Liberty, and any CDI-capable runtime.
