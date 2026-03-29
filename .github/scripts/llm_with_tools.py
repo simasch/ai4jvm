@@ -228,6 +228,7 @@ def run() -> str:
         for tc in tool_calls:
             fn_name = tc["function"]["name"]
             fn_args = json.loads(tc["function"]["arguments"])
+            print(f"Tool call: {fn_name}({fn_args})", file=sys.stderr)
             handler = _TOOL_HANDLERS.get(fn_name)
             result = handler(fn_args) if handler else f"Unknown tool: {fn_name}"
             messages.append({

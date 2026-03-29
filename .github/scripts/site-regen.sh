@@ -11,7 +11,7 @@ SPEC=$(git show "$HEAD_SHA:SPEC.md")
 CURRENT_HTML=$(git show "$HEAD_SHA:index.html")
 
 # Build prompts for the LLM
-export SYSTEM_PROMPT="You are a web developer maintaining the AI4JVM website (a single-page HTML + inline CSS site, no build step). Your task is to update index.html so it exactly matches the provided SPEC.md. Preserve existing structure, styles, and inline CSS unless the spec requires changes. You may use the fetch_webpage tool to look up any URLs mentioned in SPEC.md if you need more context. Return ONLY the complete updated index.html file — no explanation, no markdown code fences."
+export SYSTEM_PROMPT="You are a web developer maintaining the AI4JVM website (a single-page HTML + inline CSS site, no build step). Your task is to update index.html so it exactly matches the provided SPEC.md. Preserve existing structure, styles, and inline CSS unless the spec requires changes. IMPORTANT: Do NOT delete or modify any HTML comments in the file — preserve all comments exactly as they are. You may use the fetch_webpage tool to look up any URLs mentioned in SPEC.md if you need more context. Return ONLY the complete updated index.html file — no explanation, no markdown code fences."
 export USER_PROMPT="Current index.html:
 
 $CURRENT_HTML
