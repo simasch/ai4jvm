@@ -63,7 +63,28 @@ NEW_TREE=$(git ls-tree "$HEAD_SHA" | \
   git mktree)
 NEW_COMMIT=$(git commit-tree "$NEW_TREE" -p "$HEAD_SHA" -m "regen: update index.html from SPEC.md")
 
-git push origin "$NEW_COMMIT:refs/heads/$HEAD_REF"
+if [ "${IS_FORK:-false}" = "true" ]; then
+  # Can't push to fork branches — push to a regen branch in the base repo
+  REGEN_BRANCH="regen/pr-$PR_NUMBER"
+  git push origin "$NEW_COMMIT:refs/heads/$REGEN_BRANCH" --force
 
-gh pr comment "$PR_NUMBER" --repo "$REPO" \
-  --body "✅ Site regenerated and pushed to this PR branch."
+  gh pr comment "$PR_NUMBER" --repo "$REPO" \
+    --body "$(cat <<COMMENT
+✅ Site regenerated! Since this PR is from a fork, I can't push directly to your branch.
+
+**To apply the changes**, run:
+\`\`\`bash
+git fetch upstream $REGEN_BRANCH
+git cherry-pick FETCH_HEAD
+git push
+\`\`\`
+
+Or a maintainer can merge the [\`$REGEN_BRANCH\`](https://github.com/$REPO/tree/$REGEN_BRANCH) branch after this PR lands.
+COMMENT
+)"
+else
+  git push origin "$NEW_COMMIT:refs/heads/$HEAD_REF"
+
+  gh pr comment "$PR_NUMBER" --repo "$REPO" \
+    --body "✅ Site regenerated and pushed to this PR branch."
+fi

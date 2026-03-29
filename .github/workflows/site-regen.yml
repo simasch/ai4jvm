@@ -51,6 +51,13 @@ jobs:
           echo "head_sha=$(echo "$PR_JSON" | jq -r '.head.sha')" >> "$GITHUB_OUTPUT"
           echo "head_ref=$(echo "$PR_JSON" | jq -r '.head.ref')" >> "$GITHUB_OUTPUT"
           echo "base_ref=$(echo "$PR_JSON" | jq -r '.base.ref')" >> "$GITHUB_OUTPUT"
+          HEAD_REPO=$(echo "$PR_JSON" | jq -r '.head.repo.full_name')
+          BASE_REPO=$(echo "$PR_JSON" | jq -r '.base.repo.full_name')
+          if [ "$HEAD_REPO" != "$BASE_REPO" ]; then
+            echo "is_fork=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "is_fork=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Checkout base (trusted code)
         uses: actions/checkout@v4
@@ -68,4 +75,5 @@ jobs:
           HEAD_REF: ${{ steps.pr.outputs.head_ref }}
           PR_NUMBER: ${{ github.event.issue.number }}
           REPO: ${{ github.repository }}
+          IS_FORK: ${{ steps.pr.outputs.is_fork }}
         run: bash .github/scripts/site-regen.sh
