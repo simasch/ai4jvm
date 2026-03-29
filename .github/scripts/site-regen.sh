@@ -24,7 +24,13 @@ Return ONLY the complete updated index.html."
 export MAX_TOKENS=32000
 
 # Call GitHub Models with tool-calling support (fetch_webpage tool)
-NEW_HTML=$(python3 "$SCRIPT_DIR/llm_with_tools.py")
+LLM_STDERR=$(mktemp)
+if ! NEW_HTML=$(python3 "$SCRIPT_DIR/llm_with_tools.py" 2>"$LLM_STDERR"); then
+  ERR=$(cat "$LLM_STDERR")
+  gh pr comment "$PR_NUMBER" --repo "$REPO" \
+    --body "$(printf '❌ Site regeneration failed:\n\n```\n%s\n```' "$ERR")"
+  exit 1
+fi
 
 if [ -z "$NEW_HTML" ]; then
   gh pr comment "$PR_NUMBER" --repo "$REPO" \
