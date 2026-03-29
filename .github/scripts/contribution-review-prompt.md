@@ -21,6 +21,8 @@ IMPORTANT: You MUST use the fetch_webpage tool to visit EVERY URL referenced in 
 
 Report any broken links, mismatched descriptions, or inactive projects in your review.
 
+IMPORTANT: Pay special attention to project activity and abandonment status. For GitHub repos, check the date of the most recent commit, last release, and open issue activity. Flag projects that appear abandoned (no meaningful activity in 12+ months). An abandoned project that is still useful (stable, working, no replacement) should be noted as such in its description (e.g. "⚠️ No longer actively maintained"). An abandoned project that is no longer useful (outdated, superseded, broken) should be recommended for exclusion.
+
 ## Output Format
 
 Write your review as markdown. Use this structure:
@@ -35,6 +37,7 @@ For each item reviewed:
 - **Java/JVM Specific:** Yes or No with explanation
 - **Relevance (>10% of Java AI devs):** Yes or No with explanation
 - **Link Verification:** For each URL — ✅ reachable and matches description, or ❌ broken / mismatched (with details)
+- **Project Activity:** Active / Abandoned but useful / Abandoned and not useful — include date of last commit/release and reasoning
 - **Assessment:** <what you know about adoption, community usage, etc.>
 - **Recommendation:** Include / Include with changes / Exclude
 - **Notes:** <any suggested improvements to the description, links, or categorization>
