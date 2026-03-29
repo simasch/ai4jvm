@@ -97,6 +97,11 @@ Note: Order by date, newest first. Don't show news older than 3 months
 - **Description:** Build stateful, multi-agent applications with cyclical graphs. Inspired by Python's LangGraph, works with both LangChain4j and Spring AI. Persistent checkpoints, deep agent architectures, and a Studio web UI.
 - **Links:** [Docs](https://langgraph4j.github.io/langgraph4j/) · [GitHub](https://github.com/langgraph4j/langgraph4j)
 
+### Akka Agents
+- **Badge:** Framework
+- **Description:** Agentic AI platform built on Akka's actor model for distributed, resilient systems. Declarative Effects API for building goal-directed agents with durable memory, multi-agent orchestration, and automatic scaling. MCP and A2A protocol support, pluggable LLM providers, runtime prompt updates, and agents auto-exposed as HTTP, gRPC, or MCP endpoints. Java and Scala SDKs.
+- **Links:** [Docs](https://doc.akka.io/) · [GitHub](https://github.com/akka/akka-sdk) · [Website](https://akka.io/akka-agents)
+
 ### Koog (JetBrains)
 - **Badge:** Framework
 - **Description:** Kotlin-native agent framework from JetBrains. Type-safe DSL, multiplatform (JVM, JS, WasmJS, Android, iOS), A2A protocol support, fault tolerance with persistence, and multi-LLM support.
