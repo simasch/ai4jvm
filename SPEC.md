@@ -5,6 +5,7 @@ AI4JVM is a curated guide to the Java AI ecosystem — a single-page website cov
 ## Guidelines
 
 - Validate accuracy with recent web information
+- **Project activity:** When researching or reviewing projects, check how active they are (recent commits, releases, maintainer responsiveness). If a project is abandoned but still useful (e.g. stable library with no need for updates), keep it but add a note like `⚠️ No longer actively maintained` in its description. If a project is abandoned and no longer useful (e.g. outdated, superseded, or broken), remove it from the site.
 
 ## Site Structure
 
@@ -192,7 +193,7 @@ Run models, train classifiers, and do ML inference directly on the JVM — no Py
 
 ### Jlama
 - **Badge:** Inference
-- **Description:** Modern LLM inference engine written in pure Java. Runs Llama, Gemma, Mistral, and more locally on CPU. Uses Java's Vector API (Project Panama) for SIMD-accelerated matrix math. Supports SafeTensors format, quantized models, and distributed inference.
+- **Description:** ⚠️ No longer actively maintained. Modern LLM inference engine written in pure Java. Runs Llama, Gemma, Mistral, and more locally on CPU. Uses Java's Vector API (Project Panama) for SIMD-accelerated matrix math. Supports SafeTensors format, quantized models, and distributed inference.
 - **Links:** [GitHub](https://github.com/tjake/Jlama) · [Tutorial](https://www.baeldung.com/java-jlama-llm)
 
 ### Deep Java Library (DJL)
