@@ -23,7 +23,13 @@ export SYSTEM_PROMPT
 export USER_PROMPT
 
 # Call GitHub Models with tool-calling support (fetch_webpage tool)
-REVIEW=$(python3 "$SCRIPT_DIR/llm_with_tools.py")
+LLM_STDERR=$(mktemp)
+if ! REVIEW=$(python3 "$SCRIPT_DIR/llm_with_tools.py" 2>"$LLM_STDERR"); then
+  ERR=$(cat "$LLM_STDERR")
+  gh pr comment "$PR_NUMBER" --repo "$REPO" \
+    --body "$(printf '❌ Review failed:\n\n```\n%s\n```' "$ERR")"
+  exit 1
+fi
 
 if [ -z "$REVIEW" ]; then
   echo "Error: No review content in response"
