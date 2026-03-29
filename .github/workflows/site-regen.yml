@@ -77,6 +77,7 @@ jobs:
           HEAD_SHA: ${{ steps.pr.outputs.head_sha }}
           HEAD_REF: ${{ steps.pr.outputs.head_ref }}
           HEAD_REPO: ${{ steps.pr.outputs.head_repo }}
+          BASE_REF: ${{ steps.pr.outputs.base_ref }}
           MAINTAINER_CAN_MODIFY: ${{ steps.pr.outputs.maintainer_can_modify }}
           PR_NUMBER: ${{ github.event.issue.number }}
           REPO: ${{ github.repository }}

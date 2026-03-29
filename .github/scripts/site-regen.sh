@@ -3,15 +3,34 @@ set -euo pipefail
 
 REPO_ROOT="$(git rev-parse --show-toplevel)"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+BASE_HEAD=$(git rev-parse HEAD)
 
-# Read SPEC.md and index.html from the PR head using git show.
-# The working directory remains the trusted base branch throughout — we never
-# check out PR code.
-SPEC=$(git show "$HEAD_SHA:SPEC.md")
-CURRENT_HTML=$(git show "$HEAD_SHA:index.html")
+# Merge the base branch into the PR head so the regen commit is up-to-date
+# and won't cause merge conflicts when the PR is merged.
+if MERGED_TREE=$(git merge-tree --write-tree HEAD "$HEAD_SHA" 2>/dev/null); then
+  # Clean merge — use the merged tree
+  MERGE_COMMIT=$(git commit-tree "$MERGED_TREE" -p "$HEAD_SHA" -p "$BASE_HEAD" \
+    -m "Merge $BASE_REF into PR branch")
+  SPEC=$(git show "$MERGE_COMMIT:SPEC.md")
+  CURRENT_HTML=$(git show "$MERGE_COMMIT:index.html")
+  REGEN_PARENT="$MERGE_COMMIT"
+  REGEN_BASE_TREE="$MERGE_COMMIT"
+else
+  # Merge conflicts (likely in index.html which we're regenerating anyway).
+  # Use SPEC.md from the PR and index.html from the base branch.
+  SPEC=$(git show "$HEAD_SHA:SPEC.md")
+  CURRENT_HTML=$(git show "$BASE_HEAD:index.html")
+  # We'll create a merge commit with both parents so git knows the histories joined.
+  REGEN_PARENT="MERGE"
+  REGEN_BASE_TREE="$BASE_HEAD"
+fi
 
 # Build prompts for the LLM
-export SYSTEM_PROMPT="You are a web developer maintaining the AI4JVM website (a single-page HTML + inline CSS site, no build step). Your task is to update index.html so it exactly matches the provided SPEC.md. Preserve existing structure, styles, and inline CSS unless the spec requires changes. IMPORTANT: Do NOT delete or modify any HTML comments in the file — preserve all comments exactly as they are. You may use the fetch_webpage tool to look up any URLs mentioned in SPEC.md if you need more context. Return ONLY the complete updated index.html file — no explanation, no markdown code fences."
+export SYSTEM_PROMPT="You are a web developer maintaining the AI4JVM website (a single-page HTML + inline CSS site, no build step). Your task is to update index.html so it exactly matches the provided SPEC.md. Preserve existing structure, styles, and inline CSS unless the spec requires changes. IMPORTANT: Do NOT delete or modify any HTML comments in the file — preserve all comments exactly as they are.
+
+Before generating the HTML, use the fetch_webpage tool to verify that URLs for any NEW items in SPEC.md are reachable and that the linked pages match the descriptions. If a link is broken or the page content doesn't match the description, add an HTML comment next to that link noting the issue (e.g. <!-- LINK CHECK: 404 -->).
+
+Return ONLY the complete updated index.html file — no explanation, no markdown code fences."
 export USER_PROMPT="Current index.html:
 
 $CURRENT_HTML
@@ -44,8 +63,8 @@ NEW_HTML=$(echo "$NEW_HTML" | sed '/^```.*$/d')
 # Store the regenerated content as a git blob object
 NEW_BLOB=$(printf '%s\n' "$NEW_HTML" | git hash-object -w --stdin)
 
-# Check whether index.html actually changed
-OLD_BLOB=$(git ls-tree "$HEAD_SHA" -- index.html | awk '{print $3}')
+# Check whether index.html actually changed compared to the merge/base state
+OLD_BLOB=$(git ls-tree "$REGEN_BASE_TREE" -- index.html | awk '{print $3}')
 
 if [ "$OLD_BLOB" = "$NEW_BLOB" ]; then
   gh pr comment "$PR_NUMBER" --repo "$REPO" \
@@ -53,15 +72,23 @@ if [ "$OLD_BLOB" = "$NEW_BLOB" ]; then
   exit 0
 fi
 
-# Build a new commit directly on top of the PR head without checking out the
-# PR branch, using git plumbing commands.
+# Build the new tree: start from the merge/base tree and replace index.html
 git config user.name "github-actions[bot]"
 git config user.email "github-actions[bot]@users.noreply.github.com"
 
-NEW_TREE=$(git ls-tree "$HEAD_SHA" | \
+NEW_TREE=$(git ls-tree "$REGEN_BASE_TREE" | \
   awk -v blob="$NEW_BLOB" '/\tindex\.html$/{printf "100644 blob %s\tindex.html\n", blob; next} {print}' | \
   git mktree)
-NEW_COMMIT=$(git commit-tree "$NEW_TREE" -p "$HEAD_SHA" -m "regen: update index.html from SPEC.md")
+
+if [ "$REGEN_PARENT" = "MERGE" ]; then
+  # Conflict case: create a merge commit with both parents
+  NEW_COMMIT=$(git commit-tree "$NEW_TREE" -p "$HEAD_SHA" -p "$BASE_HEAD" \
+    -m "regen: update index.html from SPEC.md")
+else
+  # Clean merge case: create a commit on top of the merge commit
+  NEW_COMMIT=$(git commit-tree "$NEW_TREE" -p "$REGEN_PARENT" \
+    -m "regen: update index.html from SPEC.md")
+fi
 
 if [ "${IS_FORK:-false}" = "true" ]; then
   # Fork PR — try different strategies to deliver the regen commit
