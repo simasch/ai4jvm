@@ -107,6 +107,11 @@ Note: Order by date, newest first. Don't show news older than 3 months
 - **Description:** Microsoft's AI orchestration SDK with first-class Java support. Provides prompt chaining, planning, memory, and agent framework abstractions with deep Azure integration.
 - **Links:** [GitHub](https://github.com/microsoft/semantic-kernel-java)
 
+### JamJet
+- **Badge:** Framework
+- **Description:** Production-grade agent runtime with native Java SDK. Rust core (Tokio) for performance, graph-based durable workflow orchestration with event-sourced state, automatic crash recovery, audit trails, and first-class human-in-the-loop. Native MCP client/server and A2A protocol support. Java SDK uses records, virtual threads, and fluent builder API. Apache 2.0.
+- **Links:** [Docs](https://docs.jamjet.dev) · [GitHub](https://github.com/jamjet-labs/jamjet) · [Examples](https://github.com/jamjet-labs/jamjet/tree/main/sdk/java/examples)
+
 ### MCP Java SDK
 - **Badge:** SDK
 - **Description:** The official Java SDK for Model Context Protocol servers and clients. Maintained by the Spring AI team. Sync/async, STDIO/SSE/Streamable HTTP transports, OAuth support via Spring integration.
