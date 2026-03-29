@@ -9,32 +9,46 @@ git config user.email "github-actions[bot]@users.noreply.github.com"
 
 BASE_HEAD=$(git rev-parse HEAD)
 
+# Get the SPEC.md diff — this is what the PR changed
+SPEC_DIFF=$(git diff "HEAD...$HEAD_SHA" -- SPEC.md)
+
+if [ -z "$SPEC_DIFF" ]; then
+  gh pr comment "$PR_NUMBER" --repo "$REPO" \
+    --body "ℹ️ No changes to \`SPEC.md\` found in this PR — nothing to regenerate."
+  exit 0
+fi
+
 # Merge the base branch into the PR head so the regen commit is up-to-date
 # and won't cause merge conflicts when the PR is merged.
 if MERGED_TREE=$(git merge-tree --write-tree HEAD "$HEAD_SHA" 2>/dev/null); then
   # Clean merge — use the merged tree
   MERGE_COMMIT=$(git commit-tree "$MERGED_TREE" -p "$HEAD_SHA" -p "$BASE_HEAD" \
     -m "Merge $BASE_REF into PR branch")
-  SPEC=$(git show "$MERGE_COMMIT:SPEC.md")
   CURRENT_HTML=$(git show "$MERGE_COMMIT:index.html")
   REGEN_PARENT="$MERGE_COMMIT"
   REGEN_BASE_TREE="$MERGE_COMMIT"
 else
   # Merge conflicts (likely in index.html which we're regenerating anyway).
-  # Use SPEC.md from the PR and index.html from the base branch.
-  SPEC=$(git show "$HEAD_SHA:SPEC.md")
   CURRENT_HTML=$(git show "$BASE_HEAD:index.html")
-  # We'll create a merge commit with both parents so git knows the histories joined.
   REGEN_PARENT="MERGE"
   REGEN_BASE_TREE="$BASE_HEAD"
 fi
 
-# Build prompts for the LLM
-SYSTEM_PROMPT="You are a web developer maintaining the AI4JVM website (a single-page HTML + inline CSS site, no build step). Your task is to update index.html so it exactly matches the provided SPEC.md. Preserve existing structure, styles, and inline CSS unless the spec requires changes. IMPORTANT: Do NOT delete or modify any HTML comments in the file — preserve all comments exactly as they are.
+# Build prompts — focused on just the PR's SPEC.md changes
+SYSTEM_PROMPT="You are a web developer maintaining the AI4JVM website (a single-page HTML + inline CSS site, no build step).
 
-Before generating the HTML, use the WebFetch tool to verify that URLs for any NEW items in SPEC.md are reachable and that the linked pages match the descriptions. If a link is broken or the page content doesn't match the description, add an HTML comment next to that link noting the issue (e.g. <!-- LINK CHECK: 404 -->).
+You will receive the current index.html and a SPEC.md diff showing what changed in this PR. Your task is to apply ONLY the changes from the diff to the HTML. Do not modify anything else.
 
-Return ONLY the complete updated index.html file starting with <!DOCTYPE html>. Do NOT include any explanation, reasoning, thinking, commentary, or markdown code fences — just the raw HTML."
+For each change in the diff:
+- Added items: create the corresponding HTML (cards, people, links, etc.) matching the existing style and structure. Insert in the correct position.
+- Removed items: delete the corresponding HTML block.
+- Modified items: update the corresponding HTML to match.
+
+IMPORTANT:
+- Do NOT delete or modify any HTML comments — preserve them exactly.
+- Do NOT change any existing content that is not affected by the diff.
+- Use the WebFetch tool to verify URLs for NEW items only. If a link is broken, add <!-- LINK CHECK: 404 --> next to it.
+- Return ONLY the complete updated index.html starting with <!DOCTYPE html>. No explanation, no markdown fences, no commentary."
 
 SYSTEM_FILE=$(mktemp)
 printf '%s' "$SYSTEM_PROMPT" > "$SYSTEM_FILE"
@@ -45,11 +59,13 @@ Current index.html:
 
 $CURRENT_HTML
 
-Update the above to match this SPEC.md:
+SPEC.md diff from this PR:
 
-$SPEC
+\`\`\`diff
+$SPEC_DIFF
+\`\`\`
 
-Return ONLY the complete updated index.html.
+Apply ONLY the above changes to index.html. Return the complete updated file.
 USEREOF
 
 # Verify Claude CLI is available
