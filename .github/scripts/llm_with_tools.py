@@ -8,6 +8,7 @@ Reads the following environment variables:
   USER_PROMPT    (required) User message passed to the model
   MODEL          (optional) Model identifier (default: openai/gpt-5)
   MAX_TOKENS     (optional) Max tokens for the final answer (default: 16384)
+  GITHUB_MODELS_ORG (optional) Org name for paid-tier endpoint
 
 Prints the final model response to stdout and exits non-zero on error.
 
@@ -24,7 +25,12 @@ import urllib.parse
 import urllib.request
 from html.parser import HTMLParser
 
-API_URL = "https://models.github.ai/inference/chat/completions"
+_MODELS_ORG = os.environ.get("GITHUB_MODELS_ORG", "")
+API_URL = (
+    f"https://models.github.ai/orgs/{_MODELS_ORG}/inference/chat/completions"
+    if _MODELS_ORG
+    else "https://models.github.ai/inference/chat/completions"
+)
 
 # How many bytes to read from a fetched page before stripping HTML/truncating.
 # Large enough to capture most useful content while avoiding huge payloads.
