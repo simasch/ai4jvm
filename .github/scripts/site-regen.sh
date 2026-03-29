@@ -30,12 +30,18 @@ else
 fi
 
 # Build prompts for the LLM
-export SYSTEM_PROMPT="You are a web developer maintaining the AI4JVM website (a single-page HTML + inline CSS site, no build step). Your task is to update index.html so it exactly matches the provided SPEC.md. Preserve existing structure, styles, and inline CSS unless the spec requires changes. IMPORTANT: Do NOT delete or modify any HTML comments in the file — preserve all comments exactly as they are.
+SYSTEM_PROMPT="You are a web developer maintaining the AI4JVM website (a single-page HTML + inline CSS site, no build step). Your task is to update index.html so it exactly matches the provided SPEC.md. Preserve existing structure, styles, and inline CSS unless the spec requires changes. IMPORTANT: Do NOT delete or modify any HTML comments in the file — preserve all comments exactly as they are.
 
-Before generating the HTML, use the fetch_webpage tool to verify that URLs for any NEW items in SPEC.md are reachable and that the linked pages match the descriptions. If a link is broken or the page content doesn't match the description, add an HTML comment next to that link noting the issue (e.g. <!-- LINK CHECK: 404 -->).
+Before generating the HTML, use the WebFetch tool to verify that URLs for any NEW items in SPEC.md are reachable and that the linked pages match the descriptions. If a link is broken or the page content doesn't match the description, add an HTML comment next to that link noting the issue (e.g. <!-- LINK CHECK: 404 -->).
 
 Return ONLY the complete updated index.html file starting with <!DOCTYPE html>. Do NOT include any explanation, reasoning, thinking, commentary, or markdown code fences — just the raw HTML."
-export USER_PROMPT="Current index.html:
+
+SYSTEM_FILE=$(mktemp)
+printf '%s' "$SYSTEM_PROMPT" > "$SYSTEM_FILE"
+
+USER_FILE=$(mktemp)
+cat > "$USER_FILE" <<USEREOF
+Current index.html:
 
 $CURRENT_HTML
 
@@ -43,12 +49,18 @@ Update the above to match this SPEC.md:
 
 $SPEC
 
-Return ONLY the complete updated index.html."
-export MAX_TOKENS=32000
+Return ONLY the complete updated index.html.
+USEREOF
 
-# Call Claude with tool-calling support (fetch_webpage tool)
+# Call Claude Code CLI with web tools
 LLM_STDERR=$(mktemp)
-if ! NEW_HTML=$(python3 "$SCRIPT_DIR/llm_with_tools.py" 2>"$LLM_STDERR"); then
+if ! NEW_HTML=$(claude -p "$(cat "$USER_FILE")" \
+  --system-prompt-file "$SYSTEM_FILE" \
+  --allowedTools "WebFetch,WebSearch" \
+  --model claude-opus-4-6 \
+  --max-turns 10 \
+  --output-format text \
+  2>"$LLM_STDERR"); then
   ERR=$(cat "$LLM_STDERR")
   gh pr comment "$PR_NUMBER" --repo "$REPO" \
     --body "$(printf '❌ Site regeneration failed:\n\n```\n%s\n```' "$ERR")"
