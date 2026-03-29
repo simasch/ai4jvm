@@ -70,25 +70,30 @@ if ! claude -p "$(cat "$USER_FILE")" \
   --allowedTools "WebFetch,WebSearch" \
   --model claude-opus-4-6 \
   --max-turns 10 \
+  --output-format text \
   --verbose \
   >"$LLM_OUTPUT" 2>"$LLM_STDERR"; then
-  ERR=$(cat "$LLM_STDERR")
-  OUTPUT=$(cat "$LLM_OUTPUT")
+  ERR=$(tail -c 3000 "$LLM_STDERR")
+  OUTPUT=$(head -c 1000 "$LLM_OUTPUT")
   DBG=$(cat "$DEBUG_INFO")
   gh pr comment "$PR_NUMBER" --repo "$REPO" \
-    --body "$(printf '❌ Site regeneration failed:\n\nDebug:\n```\n%s\n```\n\nStderr (last 3000 chars):\n```\n%.3000s\n```\n\nStdout (first 1000 chars):\n```\n%.1000s\n```' "$DBG" "$ERR" "$OUTPUT")"
+    --body "$(printf '❌ Site regeneration failed (non-zero exit):\n\nDebug:\n```\n%s\n```\n\nStderr (last 3000 chars):\n```\n%s\n```\n\nStdout (first 1000 chars):\n```\n%s\n```' "$DBG" "$ERR" "$OUTPUT")"
   exit 1
 fi
 
 NEW_HTML=$(cat "$LLM_OUTPUT")
+RAW_SIZE=${#NEW_HTML}
 
 if [ -z "$NEW_HTML" ]; then
-  ERR=$(cat "$LLM_STDERR")
+  ERR=$(tail -c 3000 "$LLM_STDERR")
   DBG=$(cat "$DEBUG_INFO")
   gh pr comment "$PR_NUMBER" --repo "$REPO" \
-    --body "$(printf '❌ Site regeneration failed: no content returned (exit 0 but empty stdout).\n\nDebug:\n```\n%s\n```\n\nStderr (last 3000 chars):\n```\n%.3000s\n```' "$DBG" "$ERR")"
+    --body "$(printf '❌ Site regeneration failed: empty stdout (exit 0).\n\nDebug:\n```\n%s\n```\n\nStderr (last 3000 chars):\n```\n%s\n```' "$DBG" "$ERR")"
   exit 1
 fi
+
+# Save raw output for error reporting
+RAW_PREVIEW=$(echo "$NEW_HTML" | head -c 1000)
 
 # Strip markdown code fences if the model wrapped the output in them
 NEW_HTML=$(echo "$NEW_HTML" | sed '/^```.*$/d')
@@ -98,8 +103,10 @@ NEW_HTML=$(echo "$NEW_HTML" | sed -n '/<!DOCTYPE html>/I,$p')
 
 # Validate the output looks like a complete HTML file
 if [ ${#NEW_HTML} -lt 1000 ]; then
+  DBG=$(cat "$DEBUG_INFO")
+  ERR=$(tail -c 2000 "$LLM_STDERR")
   gh pr comment "$PR_NUMBER" --repo "$REPO" \
-    --body "$(printf '❌ Site regeneration failed: model output does not appear to be a valid HTML file (%d bytes after filtering).\n\nFirst 500 chars of raw output:\n```\n%.500s\n```' "${#NEW_HTML}" "$NEW_HTML")"
+    --body "$(printf '❌ Site regeneration failed: invalid HTML (%d bytes after filtering, %d raw).\n\nDebug:\n```\n%s\n```\n\nRaw output (first 1000 chars):\n```\n%s\n```\n\nStderr (last 2000 chars):\n```\n%s\n```' "${#NEW_HTML}" "$RAW_SIZE" "$DBG" "$RAW_PREVIEW" "$ERR")"
   exit 1
 fi
 
