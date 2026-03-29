@@ -30,7 +30,7 @@ if ! printf '%s' "$USER_PROMPT" | claude -p "Review the SPEC.md diff provided vi
   --system-prompt-file "$SYSTEM_FILE" \
   --allowedTools "WebFetch,WebSearch" \
   --model claude-opus-4-6 \
-  --max-turns 10 \
+  --max-turns 30 \
   --output-format text \
   >"$LLM_OUTPUT" 2>"$LLM_STDERR"; then
   ERR=$(cat "$LLM_STDERR")

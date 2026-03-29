@@ -69,7 +69,7 @@ if ! claude -p "$(cat "$USER_FILE")" \
   --system-prompt-file "$SYSTEM_FILE" \
   --allowedTools "WebFetch,WebSearch" \
   --model claude-opus-4-6 \
-  --max-turns 10 \
+  --max-turns 30 \
   --output-format text \
   --verbose \
   >"$LLM_OUTPUT" 2>"$LLM_STDERR"; then
