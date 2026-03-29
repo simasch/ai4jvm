@@ -18,20 +18,16 @@ if [ -z "$SPEC_DIFF" ]; then
   exit 0
 fi
 
-# Merge the base branch into the PR head so the regen commit is up-to-date
-# and won't cause merge conflicts when the PR is merged.
+# Merge base into PR head to get the most up-to-date index.html for Claude
+# to edit. The actual regen commit will be parented on HEAD_SHA (not a merge).
 if MERGED_TREE=$(git merge-tree --write-tree HEAD "$HEAD_SHA" 2>/dev/null); then
   MERGE_COMMIT=$(git commit-tree "$MERGED_TREE" -p "$HEAD_SHA" -p "$BASE_HEAD" \
     -m "Merge $BASE_REF into PR branch")
-  REGEN_PARENT="$MERGE_COMMIT"
-  REGEN_BASE_TREE="$MERGE_COMMIT"
+  git show "$MERGE_COMMIT:index.html" > "$REPO_ROOT/index.html"
 else
-  REGEN_PARENT="MERGE"
-  REGEN_BASE_TREE="$BASE_HEAD"
+  # Merge conflicts — use base's index.html (we're regenerating it anyway)
+  git show "$BASE_HEAD:index.html" > "$REPO_ROOT/index.html"
 fi
-
-# Write the merged index.html to the working directory for Claude to edit
-git show "$REGEN_BASE_TREE:index.html" > "$REPO_ROOT/index.html"
 # Save a copy to detect changes
 cp "$REPO_ROOT/index.html" "$REPO_ROOT/index.html.orig"
 
@@ -94,35 +90,27 @@ rm -f "$REPO_ROOT/index.html.orig"
 # Store the regenerated content as a git blob object
 NEW_BLOB=$(cat "$REPO_ROOT/index.html" | git hash-object -w --stdin)
 
-# Build the new tree: start from the merge/base tree and replace index.html
-NEW_TREE=$(git ls-tree "$REGEN_BASE_TREE" | \
+# Build the regen commit on top of HEAD_SHA (the PR tip) — NOT a merge commit.
+# Using HEAD_SHA's tree preserves the PR's SPEC.md changes and only replaces
+# index.html. A merge commit with BASE_HEAD as parent would confuse GitHub's
+# PR diff calculation.
+NEW_TREE=$(git ls-tree "$HEAD_SHA" | \
   awk -v blob="$NEW_BLOB" '/\tindex\.html$/{printf "100644 blob %s\tindex.html\n", blob; next} {print}' | \
   git mktree)
 
-if [ "$REGEN_PARENT" = "MERGE" ]; then
-  NEW_COMMIT=$(git commit-tree "$NEW_TREE" -p "$HEAD_SHA" -p "$BASE_HEAD" \
-    -m "regen: update index.html from SPEC.md")
-else
-  NEW_COMMIT=$(git commit-tree "$NEW_TREE" -p "$REGEN_PARENT" \
-    -m "regen: update index.html from SPEC.md")
-fi
+NEW_COMMIT=$(git commit-tree "$NEW_TREE" -p "$HEAD_SHA" \
+  -m "regen: update index.html from SPEC.md")
 
 if [ "${IS_FORK:-false}" = "true" ]; then
   REGEN_BRANCH="regen/pr-$PR_NUMBER"
   BASE_OWNER="${REPO%%/*}"
 
   if [ -n "${MAINTAINER_PAT:-}" ]; then
-    # Strategy 1: Push directly to fork. Build fork-safe commit from fork's
-    # tree with only index.html replaced (avoids .github/ changes).
-    FORK_TREE=$(git ls-tree "$HEAD_SHA" | \
-      awk -v blob="$NEW_BLOB" '/\tindex\.html$/{printf "100644 blob %s\tindex.html\n", blob; next} {print}' | \
-      git mktree)
-    FORK_COMMIT=$(git commit-tree "$FORK_TREE" -p "$HEAD_SHA" \
-      -m "regen: update index.html from SPEC.md")
-
+    # Strategy 1: Push directly to fork. NEW_COMMIT is already built from
+    # HEAD_SHA's tree (no .github/ changes from base), so it's fork-safe.
     FORK_URL="https://x-access-token:${MAINTAINER_PAT}@github.com/${HEAD_REPO}.git"
     PUSH_ERR=$(mktemp)
-    if git push --force "$FORK_URL" "$FORK_COMMIT:refs/heads/$HEAD_REF" 2>"$PUSH_ERR"; then
+    if git push --force "$FORK_URL" "$NEW_COMMIT:refs/heads/$HEAD_REF" 2>"$PUSH_ERR"; then
       gh pr comment "$PR_NUMBER" --repo "$REPO" \
         --body "✅ Site regenerated and pushed to this PR branch."
       exit 0
