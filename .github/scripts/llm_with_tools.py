@@ -200,7 +200,7 @@ def _api_call(messages: list, github_token: str, model: str,
 # ---------------------------------------------------------------------------
 
 def run() -> str:
-    github_token = os.environ["GITHUB_TOKEN"]
+    github_token = os.environ.get("MAINTAINER_PAT") or os.environ["GITHUB_TOKEN"]
     system_prompt = os.environ["SYSTEM_PROMPT"]
     user_prompt = os.environ["USER_PROMPT"]
     model = os.environ.get("MODEL", "openai/gpt-5")
