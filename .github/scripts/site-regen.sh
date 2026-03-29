@@ -100,8 +100,9 @@ if [ "${IS_FORK:-false}" = "true" ]; then
   REGEN_BRANCH="regen/pr-$PR_NUMBER"
   BASE_OWNER="${REPO%%/*}"
 
-  if [ -n "${MAINTAINER_PAT:-}" ] && [ "${MAINTAINER_CAN_MODIFY:-false}" = "true" ]; then
+  if [ -n "${MAINTAINER_PAT:-}" ]; then
     # Strategy 1: Push directly to the fork branch using the PAT
+    # Try regardless of maintainer_can_modify — the PAT may have access
     FORK_URL="https://x-access-token:${MAINTAINER_PAT}@github.com/${HEAD_REPO}.git"
     PUSH_ERR=$(mktemp)
     if git push --force "$FORK_URL" "$NEW_COMMIT:refs/heads/$HEAD_REF" 2>"$PUSH_ERR"; then
@@ -116,8 +117,18 @@ if [ "${IS_FORK:-false}" = "true" ]; then
   # Push the regen commit to a branch in the base repo for all fork fallbacks
   git push origin "$NEW_COMMIT:refs/heads/$REGEN_BRANCH" --force
 
+  # Strategy 2/3 may fail if a PR already exists from a previous /regen.
+  # Since the regen branch is always force-pushed, the existing PR is already
+  # up-to-date. Just notify and exit.
+
   if [ -n "${MAINTAINER_PAT:-}" ]; then
-    # Strategy 2: Open a PR on the contributor's fork
+    # Strategy 2: Open a PR on the contributor's fork (or reuse existing)
+    EXISTING_PR=$(GH_TOKEN="$MAINTAINER_PAT" gh api "repos/${HEAD_REPO}/pulls?head=${BASE_OWNER}:${REGEN_BRANCH}&base=${HEAD_REF}&state=open" 2>/dev/null | jq -r '.[0].html_url // empty')
+    if [ -n "$EXISTING_PR" ]; then
+      gh pr comment "$PR_NUMBER" --repo "$REPO" \
+        --body "✅ Site regenerated! The PR on your fork has been updated with the latest \`index.html\`: ${EXISTING_PR}"
+      exit 0
+    fi
     GH_TOKEN="$MAINTAINER_PAT" gh api "repos/${HEAD_REPO}/pulls" \
       -f title="regen: update index.html from SPEC.md" \
       -f head="${BASE_OWNER}:${REGEN_BRANCH}" \
@@ -131,7 +142,13 @@ if [ "${IS_FORK:-false}" = "true" ]; then
     }
   fi
 
-  # Strategy 3: Fallback — new PR to main in the base repo
+  # Strategy 3: Fallback — new PR to main in the base repo (or reuse existing)
+  EXISTING_PR=$(gh pr list --repo "$REPO" --head "$REGEN_BRANCH" --base main --state open --json url --jq '.[0].url' 2>/dev/null)
+  if [ -n "$EXISTING_PR" ]; then
+    gh pr comment "$PR_NUMBER" --repo "$REPO" \
+      --body "✅ Site regenerated! The existing PR has been updated: ${EXISTING_PR}"
+    exit 0
+  fi
   PR_URL=$(gh pr create --repo "$REPO" \
     --head "$REGEN_BRANCH" \
     --base main \
