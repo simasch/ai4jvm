@@ -76,7 +76,7 @@ if [ ${#NEW_HTML} -lt 1000 ]; then
   exit 1
 fi
 
-if ! echo "$NEW_HTML" | head -1 | grep -qi '<!DOCTYPE html>'; then
+if ! head -1 "$REPO_ROOT/index.html" | grep -qi '<!DOCTYPE html>'; then
   gh pr comment "$PR_NUMBER" --repo "$REPO" \
     --body "❌ Site regeneration failed: index.html does not start with <!DOCTYPE html>."
   exit 1
