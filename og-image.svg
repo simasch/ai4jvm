@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f1117"/>
+      <stop offset="100%" stop-color="#181b24"/>
+    </linearGradient>
+    <linearGradient id="accent-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6c63ff"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="accent-grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#f472b6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle grid pattern -->
+  <g opacity="0.04" stroke="#e2e4ea" stroke-width="1">
+    <line x1="200" y1="0" x2="200" y2="630"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+    <line x1="0" y1="126" x2="1200" y2="126"/>
+    <line x1="0" y1="252" x2="1200" y2="252"/>
+    <line x1="0" y1="378" x2="1200" y2="378"/>
+    <line x1="0" y1="504" x2="1200" y2="504"/>
+  </g>
+
+  <!-- Decorative glowing orbs -->
+  <circle cx="950" cy="180" r="180" fill="#6c63ff" opacity="0.06"/>
+  <circle cx="250" cy="480" r="140" fill="#38bdf8" opacity="0.05"/>
+  <circle cx="1050" cy="500" r="100" fill="#f472b6" opacity="0.04"/>
+
+  <!-- Top accent line -->
+  <rect x="0" y="0" width="1200" height="4" fill="url(#accent-grad)"/>
+
+  <!-- Duke-inspired Java mascot (simplified) -->
+  <g transform="translate(820, 120)" opacity="0.12">
+    <!-- Coffee cup / Java logo simplified -->
+    <rect x="0" y="40" width="300" height="350" rx="30" fill="none" stroke="#6c63ff" stroke-width="3"/>
+    <path d="M60 40 Q60 0 150 0 Q240 0 240 40" fill="none" stroke="#6c63ff" stroke-width="3"/>
+    <!-- Steam lines -->
+    <path d="M100 0 Q110 -30 100 -50 Q90 -70 100 -90" fill="none" stroke="#38bdf8" stroke-width="2.5"/>
+    <path d="M150 0 Q160 -35 150 -55 Q140 -75 150 -100" fill="none" stroke="#38bdf8" stroke-width="2.5"/>
+    <path d="M200 0 Q210 -30 200 -50 Q190 -70 200 -90" fill="none" stroke="#38bdf8" stroke-width="2.5"/>
+  </g>
+
+  <!-- Neural network nodes -->
+  <g opacity="0.08">
+    <circle cx="900" cy="300" r="6" fill="#38bdf8"/>
+    <circle cx="960" cy="260" r="4" fill="#6c63ff"/>
+    <circle cx="1020" cy="310" r="5" fill="#f472b6"/>
+    <circle cx="980" cy="370" r="4" fill="#38bdf8"/>
+    <circle cx="1060" cy="250" r="3" fill="#6c63ff"/>
+    <circle cx="1100" cy="330" r="5" fill="#38bdf8"/>
+    <line x1="900" y1="300" x2="960" y2="260" stroke="#38bdf8" stroke-width="1"/>
+    <line x1="960" y1="260" x2="1020" y2="310" stroke="#6c63ff" stroke-width="1"/>
+    <line x1="1020" y1="310" x2="980" y2="370" stroke="#f472b6" stroke-width="1"/>
+    <line x1="960" y1="260" x2="1060" y2="250" stroke="#6c63ff" stroke-width="1"/>
+    <line x1="1020" y1="310" x2="1100" y2="330" stroke="#38bdf8" stroke-width="1"/>
+    <line x1="900" y1="300" x2="980" y2="370" stroke="#38bdf8" stroke-width="1"/>
+  </g>
+
+  <!-- Main title -->
+  <text x="100" y="240" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="88" font-weight="700" fill="#ffffff" letter-spacing="-2">AI4JVM</text>
+
+  <!-- Accent underline -->
+  <rect x="100" y="260" width="280" height="4" rx="2" fill="url(#accent-grad)"/>
+
+  <!-- Subtitle -->
+  <text x="100" y="320" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="36" font-weight="400" fill="#e2e4ea">Java AI Ecosystem Guide</text>
+
+  <!-- Tags -->
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="20" font-weight="500">
+    <!-- Tag: Frameworks -->
+    <rect x="100" y="370" width="165" height="38" rx="8" fill="#6c63ff" opacity="0.15"/>
+    <text x="120" y="395" fill="#6c63ff">Frameworks</text>
+
+    <!-- Tag: Inference -->
+    <rect x="285" y="370" width="145" height="38" rx="8" fill="#38bdf8" opacity="0.15"/>
+    <text x="305" y="395" fill="#38bdf8">Inference</text>
+
+    <!-- Tag: Tools -->
+    <rect x="450" y="370" width="100" height="38" rx="8" fill="#f472b6" opacity="0.15"/>
+    <text x="470" y="395" fill="#f472b6">Tools</text>
+
+    <!-- Tag: Resources -->
+    <rect x="570" y="370" width="155" height="38" rx="8" fill="#38bdf8" opacity="0.15"/>
+    <text x="590" y="395" fill="#38bdf8">Resources</text>
+  </g>
+
+  <!-- Domain -->
+  <text x="100" y="540" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="24" font-weight="400" fill="#8b8fa3">ai4jvm.com</text>
+
+  <!-- Bottom accent line -->
+  <rect x="0" y="626" width="1200" height="4" fill="url(#accent-grad2)"/>
+</svg>
