@@ -182,6 +182,11 @@ Technologies that supercharge Java development when paired with AI code assistan
 - **Description:** Curated directory of AI coding skills from JVM ecosystem engineers. Opinionated best-practice guides that AI tools (Claude Code, Cursor, Copilot) use as context — covering Spring Boot, jOOQ, Testcontainers, Docker, and more. Only lists skills that teach AI something it wouldn't know on its own.
 - **Links:** [Website](https://jvmskills.com) · [GitHub](https://github.com/jvm-skills/jvm-skills)
 
+### Awesome GitHub Copilot
+- **Badge:** Skills
+- **Description:** Awesome Copilot Skills is a curated registry of reusable AI agent skills that developers can plug into agents, providing ready-made capabilities, prompts, and workflows. It helps Java AI developers quickly extend agent functionality without building everything from scratch.
+- **Links:** website: https://awesome-copilot.github.com/skills/?q=java
+
 ---
 
 ## Inference & Training
