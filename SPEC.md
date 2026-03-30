@@ -122,7 +122,7 @@ Technologies that supercharge Java development when paired with AI code assistan
 ### Awesome GitHub Copilot
 - **Badge:** Skills
 - **Description:** Awesome Copilot Skills is a curated registry of reusable AI agent skills that developers can plug into agents, providing ready-made capabilities, prompts, and workflows. It helps Java AI developers quickly extend agent functionality without building everything from scratch.
-- **Links:** website: https://awesome-copilot.github.com/skills/
+- **Links:** website: https://awesome-copilot.github.com/skills/?q=java
 
 ---
 
