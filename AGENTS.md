@@ -14,6 +14,7 @@ Single-page website (`index.html`) — HTML + inline CSS, no build step.
 - Keep descriptions concise (2-3 sentences) and factual
 - Cards use badge classes: `badge-framework`, `badge-inference`, `badge-assistant`, `badge-resource`
 - Each card has a title, description, and links (Docs, GitHub, Website, etc.)
+- If a project is abandoned but still useful, note it in the description (e.g. "⚠️ No longer actively maintained"). Remove abandoned projects that are no longer useful.
 
 ## Fetching
 

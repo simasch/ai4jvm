@@ -2,6 +2,11 @@
 
 AI4JVM is a curated guide to the Java AI ecosystem — a single-page website covering agent frameworks, inference engines, code assistants, key people, and learning resources.
 
+## Guidelines
+
+- Validate accuracy with recent web information
+- **Project activity:** When researching or reviewing projects, check how active they are (recent commits, releases, maintainer responsiveness). If a project is abandoned but still useful (e.g. stable library with no need for updates), keep it but add a note like `⚠️ No longer actively maintained` in its description. If a project is abandoned and no longer useful (e.g. outdated, superseded, or broken), remove it from the site.
+
 ## Site Structure
 
 - Single `index.html` file (HTML + inline CSS, no build step)
@@ -18,6 +23,13 @@ AI4JVM is a curated guide to the Java AI ecosystem — a single-page website cov
 - Where possible use icons for links - for blog or other use a world / www icon. don't use text labels.
 - In a given section, use different colors for different badge types.
 
+### Link Affordance
+- **Clickable cards:** If a card has a single primary destination (e.g. resource cards with one link), make the entire card an `<a>` tag so clicking anywhere on the card navigates. Keep secondary icon links overlaid on top.
+- **Card titles as links:** For cards with multiple links (frameworks, tools), make the card `h3` title a clickable link to the primary resource (docs or website). Style title links with an underline on hover.
+- **News links:** Underline news item links so they're visually distinct from surrounding text.
+- **Inline text links:** Any link within body text or descriptions should be underlined.
+- **Don't mislead:** Only apply hover lift/border effects to cards that are actually clickable. Non-clickable cards should still have a subtle hover border but no translateY lift.
+
 ## Hero
 
 - Title: "Java meets **Artificial Intelligence**" (gradient text on "Artificial Intelligence")
@@ -30,7 +42,7 @@ AI4JVM is a curated guide to the Java AI ecosystem — a single-page website cov
 Latest headlines about the Java AI ecosystem. Each item has a link and brief description.
 Note: Order by date, newest first. Don't show news older than 3 months
 
-- https://spring.io/blog/2026/03/16/spring-ai-2-0-0-M3-and-1-1-3-and-1-0-4-available
+- https://spring.io/blog/2026/03/26/spring-ai-2-0-0-M4-and-1-1-4-and-1-0-5-available
 - https://blog.jetbrains.com/kotlin/2026/03/introducing-tracy-the-ai-observability-library-for-kotlin/
 - https://www.tmdevlab.com/mcp-server-performance-benchmark.html
 - https://thenewstack.io/2026-java-ai-apps/
@@ -48,7 +60,7 @@ Note: Order by date, newest first. Don't show news older than 3 months
 
 ### LangChain4j
 - **Badge:** Framework
-- **Description:** The most popular Java LLM library. Unified API across 20+ LLM providers and 30+ embedding stores. Three levels of abstraction from low-level prompts to high-level AI Services. Supports RAG, tool calling, MCP, and agents.
+- **Description:** The most popular Java LLM library. Unified API across 20+ LLM providers and 20+ embedding stores. Three levels of abstraction from low-level prompts to high-level AI Services. Supports RAG, tool calling, MCP, and agents.
 - **Links:** [Docs](https://docs.langchain4j.dev/) · [GitHub](https://github.com/langchain4j/langchain4j)
 
 ### Embabel
@@ -66,10 +78,30 @@ Note: Order by date, newest first. Don't show news older than 3 months
 - **Description:** Enterprise-grade Quarkus extension for LangChain4j. Native compilation with GraalVM, built-in observability (metrics, tracing, auditing), and Dev UI tooling. Maintained by Red Hat & IBM.
 - **Links:** [Docs](https://docs.quarkiverse.io/quarkus-langchain4j/dev/index.html) · [GitHub](https://github.com/quarkiverse/quarkus-langchain4j)
 
+### Helidon LangChain4j
+- **Badge:** Framework
+- **Description:** Oracle's Helidon framework integration with LangChain4j. Declarative AI Services via Helidon Inject, build-time code generation for GraalVM native images, streaming chat over Java Streams, guardrails, built-in metrics, and agentic support (workflows and dynamic agents). Runs on virtual threads.
+- **Links:** [Docs](https://helidon.io/docs/v4/se/ai/langchain4j/langchain4j) · [GitHub](https://github.com/helidon-io/helidon-examples/tree/helidon-4.x/examples/integrations/langchain4j)
+
+### Helidon MCP
+- **Badge:** Framework
+- **Description:** Helidon's Model Context Protocol server and client implementation. Declarative and imperative APIs for building MCP servers with tools, resources, and prompts. Streamable HTTP and SSE transports, virtual threads, build-time processing. From Oracle's Helidon team.
+- **Links:** [Docs](https://helidon.io/docs/v4/se/ai/mcp) · [GitHub](https://github.com/helidon-io/helidon-mcp)
+
+### LangChain4j CDI
+- **Badge:** Framework
+- **Description:** CDI extension for LangChain4j (part of the LangChain4j project) that brings AI services to Jakarta EE and MicroProfile applications. Inject AI services as CDI beans with `@RegisterAIService`, configure via MicroProfile Config, and add resilience with Fault Tolerance. Supports Quarkus, Helidon, WildFly, Payara, GlassFish, Liberty, and any CDI-capable runtime.
+- **Links:** [GitHub](https://github.com/langchain4j/langchain4j-cdi)
+
 ### LangGraph4j
 - **Badge:** Framework
 - **Description:** Build stateful, multi-agent applications with cyclical graphs. Inspired by Python's LangGraph, works with both LangChain4j and Spring AI. Persistent checkpoints, deep agent architectures, and a Studio web UI.
 - **Links:** [Docs](https://langgraph4j.github.io/langgraph4j/) · [GitHub](https://github.com/langgraph4j/langgraph4j)
+
+### Akka Agents
+- **Badge:** Framework
+- **Description:** Agentic AI platform built on Akka's actor model for distributed, resilient systems. Declarative Effects API for building goal-directed agents with durable memory, multi-agent orchestration, and automatic scaling. MCP and A2A protocol support, pluggable LLM providers, runtime prompt updates, and agents auto-exposed as HTTP, gRPC, or MCP endpoints. Java and Scala SDKs.
+- **Links:** [Docs](https://doc.akka.io/) · [GitHub](https://github.com/akka/akka-sdk) · [Website](https://akka.io/akka-agents)
 
 ### Koog (JetBrains)
 - **Badge:** Framework
@@ -78,12 +110,17 @@ Note: Order by date, newest first. Don't show news older than 3 months
 
 ### Semantic Kernel (Java)
 - **Badge:** Framework
-- **Description:** Microsoft's AI orchestration SDK with Java support. Merged with AutoGen into a unified Microsoft Agent Framework with deep Azure integration. Supports prompt chaining, planning, and memory.
+- **Description:** Microsoft's AI orchestration SDK with first-class Java support. Provides prompt chaining, planning, memory, and agent framework abstractions with deep Azure integration.
 - **Links:** [GitHub](https://github.com/microsoft/semantic-kernel-java)
+
+### JamJet
+- **Badge:** Framework
+- **Description:** Production-grade agent runtime with native Java SDK. Rust core (Tokio) for performance, graph-based durable workflow orchestration with event-sourced state, automatic crash recovery, audit trails, and first-class human-in-the-loop. Native MCP client/server and A2A protocol support. Java SDK uses records, virtual threads, and fluent builder API. Apache 2.0.
+- **Links:** [Docs](https://docs.jamjet.dev) · [GitHub](https://github.com/jamjet-labs/jamjet) · [Examples](https://github.com/jamjet-labs/jamjet/tree/main/sdk/java/examples)
 
 ### MCP Java SDK
 - **Badge:** SDK
-- **Description:** The official Java SDK for Model Context Protocol servers and clients. Co-maintained by the Spring AI team and Anthropic. Sync/async, STDIO/SSE/Streamable HTTP transports, OAuth support.
+- **Description:** The official Java SDK for Model Context Protocol servers and clients. Maintained by the Spring AI team. Sync/async, STDIO/SSE/Streamable HTTP transports, OAuth support via Spring integration.
 - **Links:** [Docs](https://modelcontextprotocol.io/sdk/java/mcp-overview) · [GitHub](https://github.com/modelcontextprotocol/java-sdk)
 
 ### Anthropic Java SDK
@@ -91,10 +128,30 @@ Note: Order by date, newest first. Don't show news older than 3 months
 - **Description:** Official Java SDK for the Claude Messages API. Streaming, retries, structured outputs, extended thinking, code execution, and files API. Build Java apps powered by Claude.
 - **Links:** [GitHub](https://github.com/anthropics/anthropic-sdk-java)
 
+### GitHub Copilot SDK for Java
+- **Badge:** SDK
+- **Description:** Official Java SDK for embedding the GitHub Copilot agentic engine directly into Java applications. Uses the same agentic harness that powers the Copilot CLI — exposes planning, tool calling, file editing, and MCP integration via a simple Java API. Currently in technical preview.
+- **Links:** [Docs](https://github.github.com/copilot-sdk-java/) · [GitHub](https://github.com/github/copilot-sdk-java)
+
 ### Tracy (JetBrains)
 - **Badge:** Library
 - **Description:** AI tracing library for Kotlin and Java. Captures structured traces from LLM interactions — messages, cost, token usage, and execution time. Implements OpenTelemetry Generative AI Semantic Conventions with exports to Langfuse, Weights & Biases, and more.
 - **Links:** [Docs](https://jetbrains.github.io/tracy/latest) · [GitHub](https://github.com/JetBrains/tracy)
+
+### Docling Java
+- **Badge:** Library
+- **Description:** Official Java client for Docling Serve — invoke document conversion, table detection, formula recognition, reading order analysis, OCR, and more from Java via the Docling Serve backend.
+- **Links:** [Docs](https://docling-project.github.io/docling-java/current) · [GitHub](https://github.com/docling-project/docling-java)
+
+### OmniHai
+- **Badge:** Library
+- **Description:** Unified Java AI utility library for Jakarta EE and MicroProfile. Single API across 10 providers with zero external runtime dependencies — just java.net.http.HttpClient. Chat, streaming, structured outputs, web search, translation, and moderation in a lightweight JAR.
+- **Links:** [Website](https://omnihai.org) · [GitHub](https://github.com/omnifaces/omnihai) · [Javadoc](https://javadoc.io/doc/org.omnifaces/omnihai)
+
+### ACP Langchain4j bridge
+- **Badge:** Library
+- **Description:** An ACP client bridging the official [Kotlin ACP sdk](https://agentclientprotocol.com/libraries/kotlin) to [LangChain4j](https://docs.langchain4j.dev/intro/) and [LangGraph4j](https://github.com/langgraph4j/langgraph4j).
+- **Links:** [GitHub](https://github.com/OsgiliathEnterprise/acp-langgraph-langchain-bridge)
 
 ---
 
@@ -119,6 +176,11 @@ Technologies that supercharge Java development when paired with AI code assistan
 - **Description:** A packaging format and registry for distributing reusable AI agent skills as Maven/Gradle JARs. Skills are Markdown files (`SKILL.md`) under `META-INF/skills/` that teach AI agents domain-specific patterns. Discover and load skills on demand in Claude Code, Kiro, and Spring AI apps.
 - **Links:** website: https://www.skillsjars.com/
 
+### jvm-skills
+- **Badge:** Skills
+- **Description:** Curated directory of AI coding skills from JVM ecosystem engineers. Opinionated best-practice guides that AI tools (Claude Code, Cursor, Copilot) use as context — covering Spring Boot, jOOQ, Testcontainers, Docker, and more. Only lists skills that teach AI something it wouldn't know on its own.
+- **Links:** [Website](https://jvmskills.com) · [GitHub](https://github.com/jvm-skills/jvm-skills)
+
 ### Awesome GitHub Copilot
 - **Badge:** Skills
 - **Description:** Awesome Copilot Skills is a curated registry of reusable AI agent skills that developers can plug into agents, providing ready-made capabilities, prompts, and workflows. It helps Java AI developers quickly extend agent functionality without building everything from scratch.
@@ -129,20 +191,24 @@ Technologies that supercharge Java development when paired with AI code assistan
 ## Inference & Training
 
 Run models, train classifiers, and do ML inference directly on the JVM — no Python required.
+### Deliverance
+- **Badge:** Inference
+- **Description:** Deliverance is a Java inference engine capable of generating text, tokenizing input, computing embeddings, and more. Can be used as embedded library inside your Java application or as an HTTP server /chat/completion). Deliverance also provides chat and Rag Chat through vibrant-maven-plugin allowing you to chat with your code!
+- **Links:** [GitHub](https://github.com/edwardcapriolo/deliverance) [Dockerhub](https://hub.docker.com/repository/docker/ecapriolo/deliverance/general)
 
 ### Jlama
 - **Badge:** Inference
-- **Description:** Modern LLM inference engine written in pure Java. Runs Llama, Gemma, Mistral, and more locally on CPU. Uses Java's Vector API (Project Panama) for SIMD-accelerated matrix math. Supports GGUF and SafeTensors formats, quantized models, and distributed inference.
+- **Description:** ⚠️ No longer actively maintained. Modern LLM inference engine written in pure Java. Runs Llama, Gemma, Mistral, and more locally on CPU. Uses Java's Vector API (Project Panama) for SIMD-accelerated matrix math. Supports SafeTensors format, quantized models, and distributed inference.
 - **Links:** [GitHub](https://github.com/tjake/Jlama) · [Tutorial](https://www.baeldung.com/java-jlama-llm)
 
 ### Deep Java Library (DJL)
 - **Badge:** Inference
-- **Description:** AWS's high-level, engine-agnostic deep learning framework. Supports PyTorch, TensorFlow, and MXNet backends. Used in production at Netflix and Amazon for real-time inference. DJLServing provides high-performance model serving.
+- **Description:** AWS's high-level, engine-agnostic deep learning framework. Supports PyTorch, TensorFlow, ONNX Runtime, and XGBoost backends. DJLServing provides high-performance model serving.
 - **Links:** [GitHub](https://github.com/deepjavalibrary/djl) · [InfoQ](https://www.infoq.com/articles/java-machine-learning-djl/)
 
 ### ONNX Runtime Java
 - **Badge:** Inference
-- **Description:** Run transformer and classical ML models directly on the JVM. Hardware acceleration via CUDA, ROCm, DirectML, and more. Enables deploying scikit-learn, PyTorch, and HuggingFace models in Java without Python or REST wrappers.
+- **Description:** Run transformer and classical ML models directly on the JVM. Hardware acceleration via CUDA, DirectML, CoreML, and more. Enables deploying scikit-learn, PyTorch, and HuggingFace models as ONNX in Java without Python at inference time.
 - **Links:** [Docs](https://onnxruntime.ai/docs/get-started/with-java.html) · [InfoQ Guide](https://www.infoq.com/articles/onnx-ai-inference-with-java/)
 
 ### Tribuo
@@ -152,12 +218,12 @@ Run models, train classifiers, and do ML inference directly on the JVM — no Py
 
 ### GPULlama3.java
 - **Badge:** Inference
-- **Description:** First Java-native Llama 3 implementation with automatic GPU acceleration via TornadoVM. No CUDA or native code needed — GPU-accelerated LLM inference in pure Java. From the University of Manchester's Beehive Lab.
+- **Description:** Java-native LLM inference with automatic GPU acceleration via TornadoVM. Supports Llama 3, Mistral, Qwen, Phi-3, and IBM Granite models in GGUF format. TornadoVM translates Java bytecode to GPU kernels (OpenCL, PTX, SPIR-V). From the University of Manchester's Beehive Lab.
 - **Links:** [InfoQ](https://www.infoq.com/news/2025/06/gpullama3-java-gpu-llm/)
 
 ### TensorFlow Java
 - **Badge:** Training
-- **Description:** Official Java bindings for TensorFlow. Train and deploy TF models entirely in Java. Used by Tribuo under the hood. Suitable for teams that want to stay within the JVM ecosystem while using TensorFlow's model formats.
+- **Description:** Java bindings for TensorFlow, maintained by the TensorFlow JVM SIG. Train and deploy TF models entirely in Java. Available as an optional Tribuo integration. Suitable for teams that want to stay within the JVM ecosystem while using TensorFlow's model formats.
 - **Links:** [Docs](https://www.tensorflow.org/jvm) · [GitHub](https://github.com/tensorflow/java)
 
 ---
@@ -174,6 +240,7 @@ Notes:
 ### Bruno Borges
 
 - **Badge:** Person
+- **Java Champion**
 - **Initials:** BB
 - **Photo:** https://avatars.githubusercontent.com/u/129743?v=4
 - **Role:** Principal Program Manager — Microsoft Java Engineering Group
@@ -182,10 +249,20 @@ Notes:
 ### Markus Eisele
 
 - **Badge:** Person
+- **Java Champion**
 - **Initials:** ME
 - **Photo:** https://avatars.githubusercontent.com/u/1358554?v=4
 - **Role:** Developer Advocate — IBM Research, JavaLand founder
 - **Links:** [@myfear](https://twitter.com/myfear) · [Bluesky](https://bsky.app/profile/myfear.com) · [GitHub](https://github.com/myfear) · [LinkedIn](https://www.linkedin.com/in/markuseisele/) · [Blog](https://blog.eisele.net/)
+
+### Antonio Goncalves
+
+- **Badge:** Person
+- **Java Champion**
+- **Initials:** AG
+- **Photo:** https://avatars.githubusercontent.com/u/729277?v=4
+- **Role:** Principal Software Engineer at Microsoft CoreAI, ParisJUG, Devoxx France, Café IA, book author
+- **Links:** [@agoncal](https://twitter.com/agoncal) · [Bluesky](https://bsky.app/profile/agoncal.bsky.social) · [GitHub](https://github.com/agoncal) · [LinkedIn](https://www.linkedin.com/in/agoncal/) · [Blog](https://antoniogoncalves.org)
 
 ### Frank Greco
 
@@ -199,6 +276,7 @@ Notes:
 ### Rod Johnson
 
 - **Badge:** Person
+- **Java Champion**
 - **Initials:** RJ
 - **Photo:** https://avatars.githubusercontent.com/u/1916583?v=4
 - **Role:** Creator of Spring Framework, CEO of Embabel
@@ -207,6 +285,7 @@ Notes:
 ### Guillaume Laforge
 
 - **Badge:** Person
+- **Java Champion**
 - **Initials:** GL
 - **Photo:** https://avatars.githubusercontent.com/u/47907?v=4
 - **Role:** Google Developer Advocate — Java, Groovy, AI
@@ -217,15 +296,16 @@ Notes:
 - **Badge:** Person
 - **Initials:** DL
 - **Photo:** https://avatars.githubusercontent.com/u/3154404?v=4
-- **Role:** Creator of LangChain4j, Principal Architect — Microsoft
+- **Role:** Creator of LangChain4j, Principal Architect — IBM
 - **Links:** [Bluesky](https://bsky.app/profile/dmythro.bsky.social) · [GitHub](https://github.com/dliubarskyi) · [LinkedIn](https://www.linkedin.com/in/dmytro-liubarskyi/)
 
 ### Josh Long
 
 - **Badge:** Person
+- **Java Champion**
 - **Initials:** JL
 - **Photo:** https://avatars.githubusercontent.com/u/54473?v=4
-- **Role:** Spring Developer Advocate, Spring AI talks
+- **Role:** Spring Developer Advocate at Broadcom
 - **Links:** [@starbuxman](https://twitter.com/starbuxman) · [Bluesky](https://bsky.app/profile/starbuxman.joshlong.com) · [GitHub](https://github.com/joshlong) · [LinkedIn](https://www.linkedin.com/in/joshlong/) · [Spring Blog](https://spring.io/authors/joshlong/)
 
 ### T. Jake Luciani
@@ -255,6 +335,7 @@ Notes:
 ### Jennifer Reif
 
 - **Badge:** Person
+- **Java Champion**
 - **Initials:** JR
 - **Photo:** https://avatars.githubusercontent.com/u/14850786?v=4
 - **Role:** Developer Advocate at Neo4j
@@ -288,6 +369,7 @@ Notes:
 ### Dan Vega
 
 - **Badge:** Person
+- **Java Champion**
 - **Initials:** DV
 - **Photo:** https://avatars.githubusercontent.com/u/349507?v=4
 - **Role:** Spring Developer Advocate, YouTube educator
@@ -298,12 +380,13 @@ Notes:
 - **Badge:** Person
 - **Initials:** DV
 - **Photo:** https://avatars.githubusercontent.com/u/12485205?v=4
-- **Role:** Engineering Manager (AI/ML) at Meta
+- **Role:** Lead Developer Advocate at Meta
 - **Links:** [@DmitryVinnik](https://twitter.com/DmitryVinnik) · [GitHub](https://github.com/dmitryvinn) · [LinkedIn](https://www.linkedin.com/in/dmitry-vinnik/) · [Blog](https://dvinnik.dev/)
 
 ### Craig Walls
 
 - **Badge:** Person
+- **Java Champion**
 - **Initials:** CW
 - **Photo:** https://avatars.githubusercontent.com/u/167926?v=4
 - **Role:** Author of *Spring AI in Action*
@@ -312,10 +395,29 @@ Notes:
 ### James Ward
 
 - **Badge:** Person
+- **Java Champion**
 - **Initials:** JW
 - **Photo:** https://avatars.githubusercontent.com/u/65043?v=4
 - **Role:** Developer Advocate — Java, Kotlin, Cloud, AI
 - **Links:** [@_JamesWard](https://twitter.com/_jamesward) · [Bluesky](https://bsky.app/profile/jamesward.com) · [GitHub](https://github.com/jamesward) · [LinkedIn](https://www.linkedin.com/in/jamesward) · [Blog](https://jamesward.com)
+
+### Mario Fusco
+
+- **Badge:** Person
+- **Java Champion**
+- **Initials:** MF
+- **Photo:** https://avatars.githubusercontent.com/u/372781?v=4
+- **Role:** LangChain4j core team, Sr. Principal Software Engineer at IBM
+- **Links:** [@mariofusco](https://x.com/mariofusco) · [GitHub](https://github.com/mariofusco) · [LinkedIn](https://www.linkedin.com/in/mario-fusco-3467213/)
+
+### Eric Deandrea
+
+- **Badge:** Person
+- **Java Champion**
+- **Initials:** ED
+- **Photo:** https://avatars.githubusercontent.com/u/363447?v=4
+- **Role:** [Docling Java](https://docling-project.github.io/docling-java/current) project lead, contributor to LangChain4j, Sr. Principal Software Engineer at IBM
+- **Links:** [Bluesky](https://bsky.app/profile/ericdeandrea.dev) · [@edeandrea](https://x.com/edeandrea) · [GitHub](https://github.com/edeandrea) · [LinkedIn](https://www.linkedin.com/in/edeandrea/)
 
 ---
 
@@ -344,6 +446,12 @@ Notes:
 - **Badge:** Book
 - **Description:** Book by Craig Walls — comprehensive guide to building AI apps with Spring
 - **Links:** [Book](https://www.manning.com/books/spring-ai-in-action)
+
+### Understanding LangChain4j
+
+- **Badge:** Book
+- **Description:** Book by Antonio Goncalves — explore the fundamentals of AI, learn the history and evolution of AI models, and understand the core concepts of LangChain4j
+- **Links:** [Book](https://www.amazon.com/Understanding-LangChain4j-2nd-agoncal-fascicles-ebook/dp/B0FDQVSLXK)
 
 ### Production LangChain4j — Inside.java
 
