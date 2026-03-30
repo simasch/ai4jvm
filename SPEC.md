@@ -328,6 +328,14 @@ Notes:
 - **Role:** LangChain4j core team, Developer Advocate at Oracle
 - **Links:** [@LizeRaes](https://twitter.com/LizeRaes) · [GitHub](https://github.com/LizeRaes) · [LinkedIn](https://www.linkedin.com/in/lize-raes-a8a34110/)
 
+### K. Siva Prasad Reddy
+
+- **Badge:** Person
+- **Initials:** SR
+- **Photo:** https://avatars.githubusercontent.com/u/542428?v=4
+- **Role:** Developer Advocate at JetBrains, author of *Beginning Spring Boot 3*
+- **Links:** [@sivalabs](https://twitter.com/sivalabs) · [GitHub](https://github.com/sivaprasadreddy) · [LinkedIn](https://in.linkedin.com/in/ksivaprasadreddy) · [YouTube](https://youtube.com/sivalabs) · [Blog](https://sivalabs.in)
+
 ### Jennifer Reif
 
 - **Badge:** Person
