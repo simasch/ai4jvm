@@ -247,6 +247,15 @@ Notes:
 - **Role:** Principal Program Manager — Microsoft Java Engineering Group
 - **Links:** [@brunoborges](https://twitter.com/brunoborges) · [Bluesky](https://bsky.app/profile/brunoborges.bsky.social) · [GitHub](https://github.com/brunoborges) · [LinkedIn](https://ca.linkedin.com/in/brunocborges) · [Blog](https://blog.brunoborges.info/)
 
+### Eric Deandrea
+
+- **Badge:** Person
+- **Java Champion**
+- **Initials:** ED
+- **Photo:** https://avatars.githubusercontent.com/u/363447?v=4
+- **Role:** [Docling Java](https://docling-project.github.io/docling-java/current) project lead, contributor to LangChain4j, Sr. Principal Software Engineer at IBM
+- **Links:** [Bluesky](https://bsky.app/profile/ericdeandrea.dev) · [@edeandrea](https://x.com/edeandrea) · [GitHub](https://github.com/edeandrea) · [LinkedIn](https://www.linkedin.com/in/edeandrea/)
+
 ### Markus Eisele
 
 - **Badge:** Person
@@ -255,6 +264,15 @@ Notes:
 - **Photo:** https://avatars.githubusercontent.com/u/1358554?v=4
 - **Role:** Developer Advocate — IBM Research, JavaLand founder
 - **Links:** [@myfear](https://twitter.com/myfear) · [Bluesky](https://bsky.app/profile/myfear.com) · [GitHub](https://github.com/myfear) · [LinkedIn](https://www.linkedin.com/in/markuseisele/) · [Blog](https://blog.eisele.net/)
+
+### Mario Fusco
+
+- **Badge:** Person
+- **Java Champion**
+- **Initials:** MF
+- **Photo:** https://avatars.githubusercontent.com/u/372781?v=4
+- **Role:** LangChain4j core team, Sr. Principal Software Engineer at IBM
+- **Links:** [@mariofusco](https://x.com/mariofusco) · [GitHub](https://github.com/mariofusco) · [LinkedIn](https://www.linkedin.com/in/mario-fusco-3467213/)
 
 ### Antonio Goncalves
 
@@ -409,24 +427,6 @@ Notes:
 - **Photo:** https://avatars.githubusercontent.com/u/65043?v=4
 - **Role:** Developer Advocate — Java, Kotlin, Cloud, AI
 - **Links:** [@_JamesWard](https://twitter.com/_jamesward) · [Bluesky](https://bsky.app/profile/jamesward.com) · [GitHub](https://github.com/jamesward) · [LinkedIn](https://www.linkedin.com/in/jamesward) · [Blog](https://jamesward.com)
-
-### Mario Fusco
-
-- **Badge:** Person
-- **Java Champion**
-- **Initials:** MF
-- **Photo:** https://avatars.githubusercontent.com/u/372781?v=4
-- **Role:** LangChain4j core team, Sr. Principal Software Engineer at IBM
-- **Links:** [@mariofusco](https://x.com/mariofusco) · [GitHub](https://github.com/mariofusco) · [LinkedIn](https://www.linkedin.com/in/mario-fusco-3467213/)
-
-### Eric Deandrea
-
-- **Badge:** Person
-- **Java Champion**
-- **Initials:** ED
-- **Photo:** https://avatars.githubusercontent.com/u/363447?v=4
-- **Role:** [Docling Java](https://docling-project.github.io/docling-java/current) project lead, contributor to LangChain4j, Sr. Principal Software Engineer at IBM
-- **Links:** [Bluesky](https://bsky.app/profile/ericdeandrea.dev) · [@edeandrea](https://x.com/edeandrea) · [GitHub](https://github.com/edeandrea) · [LinkedIn](https://www.linkedin.com/in/edeandrea/)
 
 ---
 
