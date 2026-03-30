@@ -42,6 +42,7 @@ AI4JVM is a curated guide to the Java AI ecosystem — a single-page website cov
 Latest headlines about the Java AI ecosystem. Each item has a link and brief description.
 Note: Order by date, newest first. Don't show news older than 3 months
 
+- https://blog.jetbrains.com/idea/2026/03/ai-assisted-java-application-development-with-agent-skills/
 - https://spring.io/blog/2026/03/26/spring-ai-2-0-0-M4-and-1-1-4-and-1-0-5-available
 - https://blog.jetbrains.com/kotlin/2026/03/introducing-tracy-the-ai-observability-library-for-kotlin/
 - https://www.tmdevlab.com/mcp-server-performance-benchmark.html
