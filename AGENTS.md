@@ -19,3 +19,4 @@ Single-page website (`index.html`) — HTML + inline CSS, no build step.
 ## Fetching
 
 - When needed use a browser tool to fetch web pages
+- **Never infer or guess page contents from URLs.** Always fetch the actual page content (via web search, browser tool, or other means) before writing titles, descriptions, or summaries. If a direct fetch fails, use web search to find the content.
