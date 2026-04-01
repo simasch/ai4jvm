@@ -11,27 +11,27 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI4JVM — Java AI Ecosystem Guide: Agent Frameworks, Inference Engines &amp; Tools</title>
-  <meta name="description" content="Your curated guide to the Java AI ecosystem — Spring AI, LangChain4j, Jlama, and more. Agent frameworks, inference engines, code assistants, learning resources, and people to follow.">
+  <title>AI4JVM — Java &amp; JVM AI Ecosystem Guide: Agent Frameworks, Inference Engines &amp; Tools</title>
+  <meta name="description" content="The curated guide to AI on the JVM — Spring AI, LangChain4j, Kotlin AI frameworks, inference engines, and more. Compare Java AI agent frameworks, find learning resources, and follow key people building the Java AI ecosystem.">
   <link rel="canonical" href="https://ai4jvm.com/">
   <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/favicon-192.png">
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="AI4JVM — Java AI Ecosystem Guide">
-  <meta property="og:description" content="Your curated guide to the Java AI ecosystem — agent frameworks, inference engines, code assistants, key people, and the best learning resources.">
+  <meta property="og:title" content="AI4JVM — Java &amp; JVM AI Ecosystem Guide">
+  <meta property="og:description" content="The curated guide to AI on the JVM — compare agent frameworks, inference engines, code assistants, and find the people and resources shaping the Java AI ecosystem.">
   <meta property="og:url" content="https://ai4jvm.com/">
   <meta property="og:site_name" content="AI4JVM">
   <meta property="og:locale" content="en_US">
   <meta property="og:image" content="https://ai4jvm.com/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="AI4JVM — Java AI Ecosystem Guide">
+  <meta property="og:image:alt" content="AI4JVM — Java &amp; JVM AI Ecosystem Guide">
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AI4JVM — Java AI Ecosystem Guide">
-  <meta name="twitter:description" content="Your curated guide to the Java AI ecosystem — agent frameworks, inference engines, code assistants, key people, and the best learning resources.">
+  <meta name="twitter:title" content="AI4JVM — Java &amp; JVM AI Ecosystem Guide">
+  <meta name="twitter:description" content="The curated guide to AI on the JVM — compare agent frameworks, inference engines, code assistants, and find the people and resources shaping the Java AI ecosystem.">
   <meta name="twitter:image" content="https://ai4jvm.com/og-image.png">
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -40,12 +40,71 @@
     "@type": "WebSite",
     "name": "AI4JVM",
     "url": "https://ai4jvm.com/",
-    "description": "Your curated guide to the Java AI ecosystem — agent frameworks, inference engines, code assistants, key people, and the best learning resources.",
+    "description": "The curated guide to AI on the JVM — compare agent frameworks, inference engines, code assistants, and find the people and resources shaping the Java AI ecosystem.",
     "publisher": {
       "@type": "Person",
       "name": "James Ward",
       "url": "https://jamesward.com"
     }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Java AI Agent Frameworks & Libraries",
+    "description": "Curated list of AI agent frameworks, SDKs, and libraries for the JVM",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Spring AI", "url": "https://spring.io/projects/spring-ai/"},
+      {"@type": "ListItem", "position": 2, "name": "LangChain4j", "url": "https://docs.langchain4j.dev/"},
+      {"@type": "ListItem", "position": 3, "name": "Embabel", "url": "https://github.com/embabel/embabel-agent"},
+      {"@type": "ListItem", "position": 4, "name": "Google ADK for Java", "url": "https://google.github.io/adk-docs/get-started/java/"},
+      {"@type": "ListItem", "position": 5, "name": "Quarkus LangChain4j", "url": "https://docs.quarkiverse.io/quarkus-langchain4j/dev/index.html"},
+      {"@type": "ListItem", "position": 6, "name": "LangGraph4j", "url": "https://langgraph4j.github.io/langgraph4j/"},
+      {"@type": "ListItem", "position": 7, "name": "Akka Agents", "url": "https://akka.io/akka-agents"},
+      {"@type": "ListItem", "position": 8, "name": "Koog (JetBrains)", "url": "https://www.jetbrains.com/koog/"},
+      {"@type": "ListItem", "position": 9, "name": "MCP Java SDK", "url": "https://modelcontextprotocol.io/sdk/java/mcp-overview"}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the best Java framework for building AI agents?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The most popular choices are Spring AI and LangChain4j. Spring AI is ideal if you're already in the Spring ecosystem, offering portable abstractions across 20+ model providers. LangChain4j provides a standalone library with three levels of abstraction, from low-level prompts to high-level AI Services. Other options include Google ADK for Java, Embabel, and Akka Agents — each with different strengths for specific use cases."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Java run LLMs locally?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Projects like Jlama and GPULlama3.java run Llama, Mistral, and other models directly on the JVM. Jlama uses Java's Vector API for SIMD-accelerated inference on CPU, while GPULlama3.java leverages TornadoVM for GPU acceleration. For production deployments, ONNX Runtime Java supports hardware-accelerated inference across CUDA, DirectML, and CoreML."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is MCP and how does it work with Java?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Model Context Protocol (MCP) is an open standard that lets AI assistants interact with external tools and data sources. The official MCP Java SDK, maintained by the Spring AI team, provides both client and server implementations with sync/async support and multiple transports (STDIO, SSE, Streamable HTTP). Helidon MCP and several frameworks also offer MCP support."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Kotlin supported by Java AI frameworks?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Most Java AI frameworks run on any JVM language. Embabel is written in Kotlin with full Java interop, Koog from JetBrains is a Kotlin-native agent framework, and Tracy provides AI observability for Kotlin. LangChain4j and Spring AI work seamlessly from Kotlin code."
+        }
+      }
+    ]
   }
   </script>
   <style>
@@ -210,6 +269,26 @@
     .person-info p { font-size: .8rem; color: var(--text-muted); }
     .person-info .person-links { margin-top: .25rem; display: flex; gap: .5rem; flex-wrap: wrap; }
     .person-info .person-links a { font-size: .78rem; }
+    .faq-list { display: flex; flex-direction: column; gap: 1rem; max-width: 800px; }
+    .faq-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      transition: border-color .2s;
+    }
+    .faq-item[open] { border-color: var(--accent); }
+    .faq-item summary {
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--text-bright);
+      cursor: pointer;
+      list-style: none;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::before { content: "▸ "; color: var(--accent); }
+    .faq-item[open] summary::before { content: "▾ "; }
+    .faq-item p { margin-top: .75rem; color: var(--text); line-height: 1.7; }
     .resource-list {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -258,6 +337,7 @@
       <a href="#assistants">Code Assistants</a>
       <a href="#inference">Inference &amp; Training</a>
       <a href="#people">People</a>
+      <a href="#faq">FAQ</a>
       <a href="#resources">Resources</a>
     </div>
   </div>
@@ -265,14 +345,14 @@
 <!-- HERO -->
 <header class="hero">
   <h1>Java meets <span>Artificial Intelligence</span></h1>
-  <p>Your curated guide to the Java AI ecosystem &mdash; agent frameworks, inference engines, code assistants, key people, and the best learning resources.</p>
+  <p>The curated guide to AI on the JVM &mdash; compare agent frameworks, inference engines, code assistants, and find the people and resources shaping the Java AI ecosystem.</p>
 </header>
 <main>
 <!-- NEWS -->
 <section id="news">
   <div class="container">
     <div class="news-bar">
-      <h3>Latest Headlines</h3>
+      <h2 class="section-title" style="font-size:1.1rem;margin-bottom:.75rem;">Latest Headlines</h2>
       <ul>
         <li><a href="https://developers.googleblog.com/announcing-adk-for-java-100-building-the-future-of-ai-agents-in-java/">Announcing ADK for Java 1.0.0: Building the Future of AI Agents in Java</a> &mdash; Google&rsquo;s Agent Development Kit for Java hits 1.0 with new tools, plugin architecture, context compaction, and human-in-the-loop support</li>
         <li><a href="https://blog.jetbrains.com/idea/2026/03/ai-assisted-java-application-development-with-agent-skills/">AI-Assisted Java Application Development with Agent Skills</a> &mdash; how Agent Skills enable AI agents to extend their capabilities with specialized knowledge for Java development</li>
@@ -291,6 +371,7 @@
 <section id="frameworks">
   <div class="container">
     <h2 class="section-title">Agent Frameworks &amp; Libraries</h2>
+    <p class="section-subtitle">Open-source frameworks and SDKs for building AI-powered applications on the JVM &mdash; from full agent platforms to Model Context Protocol implementations.</p>
     <div class="card-grid">
 
       <div class="card">
@@ -959,6 +1040,32 @@
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+<hr class="section-divider">
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <h2 class="section-title">FAQ</h2>
+    <p class="section-subtitle">Frequently asked questions about AI development on the JVM.</p>
+    <div class="faq-list">
+      <details class="faq-item" open>
+        <summary>What is the best Java framework for building AI agents?</summary>
+        <p>The most popular choices are <a href="#frameworks">Spring AI and LangChain4j</a>. Spring AI is ideal if you&rsquo;re already in the Spring ecosystem, offering portable abstractions across 20+ model providers. LangChain4j provides a standalone library with three levels of abstraction, from low-level prompts to high-level AI Services. Other options include Google ADK for Java, Embabel, and Akka Agents &mdash; each with different strengths for specific use cases.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can Java run LLMs locally?</summary>
+        <p>Yes. Projects like <a href="#inference">Jlama and GPULlama3.java</a> run Llama, Mistral, and other models directly on the JVM. Jlama uses Java&rsquo;s Vector API for SIMD-accelerated inference on CPU, while GPULlama3.java leverages TornadoVM for GPU acceleration. For production deployments, ONNX Runtime Java supports hardware-accelerated inference across CUDA, DirectML, and CoreML.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What is MCP and how does it work with Java?</summary>
+        <p>The Model Context Protocol (MCP) is an open standard that lets AI assistants interact with external tools and data sources. The official MCP Java SDK, maintained by the Spring AI team, provides both client and server implementations with sync/async support and multiple transports (STDIO, SSE, Streamable HTTP). Helidon MCP and several frameworks also offer MCP support.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is Kotlin supported by Java AI frameworks?</summary>
+        <p>Yes. Most Java AI frameworks run on any JVM language. Embabel is written in Kotlin with full Java interop, Koog from JetBrains is a Kotlin-native agent framework, and Tracy provides AI observability for Kotlin. LangChain4j and Spring AI work seamlessly from Kotlin code.</p>
+      </details>
     </div>
   </div>
 </section>
