@@ -134,7 +134,7 @@ Note: Order by date, newest first. Don't show news older than 3 months
 - **Description:** Helidon's Model Context Protocol server and client implementation. Declarative and imperative APIs for building MCP servers with tools, resources, and prompts. Streamable HTTP and SSE transports, virtual threads, build-time processing. From Oracle's Helidon team.
 - **Links:** [Docs](https://helidon.io/docs/v4/se/ai/mcp) · [GitHub](https://github.com/helidon-io/helidon-mcp)
 
-### LangChain4j CDI
+### LangChain4j-CDI
 - **Badge:** Framework
 - **Description:** CDI extension for LangChain4j (part of the LangChain4j project) that brings AI services to Jakarta EE and MicroProfile applications. Inject AI services as CDI beans with `@RegisterAIService`, configure via MicroProfile Config, and add resilience with Fault Tolerance. Supports Quarkus, Helidon, WildFly, Payara, GlassFish, Liberty, and any CDI-capable runtime.
 - **Links:** [GitHub](https://github.com/langchain4j/langchain4j-cdi)
@@ -198,6 +198,27 @@ Note: Order by date, newest first. Don't show news older than 3 months
 - **Badge:** Library
 - **Description:** An ACP client bridging the official [Kotlin ACP sdk](https://agentclientprotocol.com/libraries/kotlin) to [LangChain4j](https://docs.langchain4j.dev/intro/) and [LangGraph4j](https://github.com/langgraph4j/langgraph4j).
 - **Links:** [GitHub](https://github.com/OsgiliathEnterprise/acp-langgraph-langchain-bridge)
+
+### A2A Java SDK
+- **Badge:** SDK
+- **Description:** The official Java SDK for [Agent-2-Agent Protocol (A2A)](https://a2a-protocol.org) servers and clients. Reference implementation based on Quarkus.
+- **Links:** [GitHub](https://github.com/a2aproject/a2a-java)
+
+### A2A Java SDK for Jakarta Servers
+- **Badge:** SDK
+- **Description:** This is the integration of the [A2A Java SDK](https://github.com/a2aproject/a2a-java) for use in JakartaEE servers.
+- **Links:** [GitHub](https://github.com/wildfly-extras/a2a-java-sdk-server-jakarta)
+
+### WildFly AI Feature Pack
+- **Badge:** Framework
+- **Description:** This is a deature pack for WildFly, providing seamless LangChain4j-CDI integration and exposing JakartaEE code as MCP tools via mcp_java annotations.
+- **Links:** [GitHub](https://github.com/wildfly-extras/wildfly-ai-feature-pack)
+
+
+### MCP_JAVA Annotations
+- **Badge:** Library
+- **Description:** A framework-agnostic Java library providing core annotations and APIs for implementing Model Context Protocol (MCP) servers and clients.
+- **Links:** [GitHub](https://github.com/mcp-java/java-mcp-annotations)
 
 ---
 
