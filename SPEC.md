@@ -206,18 +206,17 @@ Note: Order by date, newest first. Don't show news older than 3 months
 
 ### A2A Java SDK for Jakarta Servers
 - **Badge:** SDK
-- **Description:** This is the integration of the [A2A Java SDK](https://github.com/a2aproject/a2a-java) for use in JakartaEE servers.
+- **Description:** Integration of the [A2A Java SDK](https://github.com/a2aproject/a2a-java) for use in Jakarta EE servers (WildFly, Tomcat, Jetty, OpenLiberty, and others).
 - **Links:** [GitHub](https://github.com/wildfly-extras/a2a-java-sdk-server-jakarta)
 
 ### WildFly AI Feature Pack
 - **Badge:** Framework
-- **Description:** This is a deature pack for WildFly, providing seamless LangChain4j-CDI integration and exposing JakartaEE code as MCP tools via mcp_java annotations.
+- **Description:** A feature pack for WildFly, providing seamless LangChain4j-CDI integration and exposing Jakarta EE code as MCP tools via MCP_JAVA Annotations.
 - **Links:** [GitHub](https://github.com/wildfly-extras/wildfly-ai-feature-pack)
-
 
 ### MCP_JAVA Annotations
 - **Badge:** Library
-- **Description:** A framework-agnostic Java library providing core annotations and APIs for implementing Model Context Protocol (MCP) servers and clients.
+- **Description:** A framework-agnostic Java library providing core annotations and APIs for implementing Model Context Protocol (MCP) servers and clients. Used by WildFly AI Feature Pack, LangChain4j-CDI, OpenLiberty, and Quarkus.
 - **Links:** [GitHub](https://github.com/mcp-java/java-mcp-annotations)
 
 ---
