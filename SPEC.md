@@ -216,7 +216,7 @@ Note: Order by date, newest first. Don't show news older than 3 months
 
 ### MCP_JAVA Annotations
 - **Badge:** Library
-- **Description:** A framework-agnostic Java library providing core annotations and APIs for implementing Model Context Protocol (MCP) servers and clients. Used by WildFly AI Feature Pack, LangChain4j-CDI, OpenLiberty, and Quarkus.
+- **Description:** A framework-agnostic Java library providing core annotations and APIs for implementing Model Context Protocol (MCP) servers and clients. Used by WildFly AI Feature Pack and LangChain4j-CDI. Compatible with OpenLiberty, Quarkus, and other Java frameworks.
 - **Links:** [GitHub](https://github.com/mcp-java/java-mcp-annotations)
 
 ---
