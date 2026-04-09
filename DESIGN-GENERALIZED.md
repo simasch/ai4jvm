@@ -76,6 +76,26 @@ SPEC.md (content) + STYLE.md (design) + CONTRIBUTING.md (policy)
    - New commit is created on the PR branch (parented on HEAD, not the merge)
 3. Handles fork PRs with three fallback strategies (direct push, fork PR, main PR)
 
+### 1.4 AI Spec Update from Feedback (Comment-Driven Iteration)
+
+**Pattern:** After a review produces feedback (either from human reviewers or the AI `/review` command), a maintainer can trigger an AI-powered update that reads all PR comments and applies the requested changes to `SPEC.md`, then regenerates `index.html` — closing the feedback loop without requiring the contributor to make manual edits.
+
+**How it works in AI4JVM:**
+1. Reviewers leave comments on the PR (inline review comments, conversation comments, or both)
+2. Maintainer comments `/update` on the PR
+3. GitHub Actions workflow triggers:
+   - Fetches all PR comments (inline review comments, conversation comments, and PR description)
+   - Feeds comments + current `SPEC.md` + base `SPEC.md` into Claude Code
+   - Claude Code edits `SPEC.md` to address the feedback
+   - If `SPEC.md` changed, runs the regen logic to update `index.html`
+   - Commits both changes to the PR branch
+4. Handles fork PRs with the same three fallback strategies as `/regen`
+
+**Why this matters:**
+- Closes the review→fix→regen loop in a single command
+- Reduces contributor friction — reviewers' feedback is applied automatically
+- Works especially well with AI-generated reviews from `/review`, creating a fully automated review-and-fix cycle
+
 **Why AI generation instead of a traditional build:**
 - The "template" is implicit — the AI understands the existing HTML patterns and extends them
 - No template language to maintain — the spec and existing HTML are the template
@@ -106,11 +126,13 @@ SPEC.md (content) + STYLE.md (design) + CONTRIBUTING.md (policy)
 │    workflows/                                        │
 │      review.yml   ← AI review workflow               │
 │      regen.yml    ← AI generation workflow            │
+│      update.yml   ← AI feedback update workflow      │
 │      deploy.yml   ← Deployment (Pages, Netlify, etc) │
 │    scripts/                                          │
 │      review-prompt.md  ← Review prompt template      │
 │      review.sh         ← Review orchestration        │
 │      regen.sh          ← Generation orchestration    │
+│      update.sh         ← Feedback update + regen     │
 └─────────────────────────────────────────────────────┘
 ```
 
@@ -163,6 +185,37 @@ Maintainer comments `/regen`
 │     - Diff exists check           │
 │  5. Commit to PR branch           │
 │     (parented on HEAD_SHA)        │
+│  6. Handle fork edge cases        │
+└──────────────────────────────────┘
+```
+
+### 2.3 Workflow: Spec Update from Feedback
+
+```
+PR has review comments / feedback
+        │
+        ▼
+Maintainer comments `/update`
+        │
+        ▼
+┌──────────────────────────────────┐
+│  GitHub Actions                   │
+│                                   │
+│  1. Fetch all PR comments:        │
+│     - Inline review comments      │
+│     - Conversation comments       │
+│     - PR description              │
+│  2. Get PR's SPEC.md + base       │
+│     SPEC.md for context           │
+│  3. Run Claude Code:              │
+│     - Read comments + both specs  │
+│     - Edit SPEC.md to address     │
+│       the feedback                │
+│  4. If SPEC.md changed:           │
+│     - Run regen logic             │
+│       (same as /regen step 1-4)   │
+│  5. Commit SPEC.md + index.html   │
+│     (two commits on PR branch)    │
 │  6. Handle fork edge cases        │
 └──────────────────────────────────┘
 ```
