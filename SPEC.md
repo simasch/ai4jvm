@@ -372,8 +372,8 @@ Notes:
 - **Java Champion**
 - **Initials:** KK
 - **Photo:** https://avatars.githubusercontent.com/u/22784?v=4
-- **Role:** Author of *Kotlin Cookbook*, *Modern Java Recipes* & *Making Java Groovy*. O'Reilly instructor for AI + Java courses. President of Kousen IT, Inc.
-- **Links:** [@kenkousen](https://twitter.com/kenkousen) · [Bluesky](https://bsky.app/profile/kousenit.com) · [GitHub](https://github.com/kousen) · [LinkedIn](https://www.linkedin.com/in/kenkousen/) · [Website](https://www.kousenit.com/)
+- **Role:** Author of six books including *Kotlin Cookbook* and *Modern Java Recipes*. O'Reilly instructor for AI + Java courses. Professor of Practice in Computer Science at Trinity College. President of Kousen IT, Inc.
+- **Links:** [@kenkousen](https://twitter.com/kenkousen) · [Bluesky](https://bsky.app/profile/kousenit.com) · [GitHub](https://github.com/kousen) · [LinkedIn](https://www.linkedin.com/in/kenkousen/) · [Website](https://www.kousenit.com/) · [Newsletter](https://kenkousen.substack.com) · [YouTube](https://youtube.com/@talesfromthejarside)
 
 ### Guillaume Laforge
 
